@@ -11,8 +11,6 @@
 		DB495674203C0EE000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
 		DB495675203C0EE000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
 		DB495676203C0EE000B81122 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495672203C0EE000B81122 /* Variable.swift */; };
-		DB49568F203C0F7A00B81122 /* FrallwareMac.h in Headers */ = {isa = PBXBuildFile; fileRef = DB49568E203C0F7A00B81122 /* FrallwareMac.h */; };
-		DB495691203C0F7A00B81122 /* FrallwareMac.m in Sources */ = {isa = PBXBuildFile; fileRef = DB495690203C0F7A00B81122 /* FrallwareMac.m */; };
 		DB495695203C0F8000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
 		DB495696203C0F8000B81122 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49566F203C0EE000B81122 /* Computation.swift */; };
 		DB495697203C0F8000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
@@ -20,6 +18,11 @@
 		DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */; };
 		DB4956B7203C0FC600B81122 /* ComputationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495678203C0EEE00B81122 /* ComputationTests.swift */; };
 		DB4956B8203C0FC600B81122 /* VariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495677203C0EEE00B81122 /* VariableTests.swift */; };
+		DB4956BB203C10C300B81122 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BA203C10C300B81122 /* HTTPClient.swift */; };
+		DB4956BC203C10C300B81122 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BA203C10C300B81122 /* HTTPClient.swift */; };
+		DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BE203C10F300B81122 /* UIKit+Extra.swift */; };
+		DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
+		DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		DB495652203C0C6D00B81122 /* libFrallware.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrallware.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB49566E203C0EDF00B81122 /* Frallware-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Frallware-Bridging-Header.h"; sourceTree = "<group>"; };
 		DB49566F203C0EE000B81122 /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
 		DB495670203C0EE000B81122 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		DB495671203C0EE000B81122 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -54,10 +56,11 @@
 		DB495677203C0EEE00B81122 /* VariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableTests.swift; sourceTree = "<group>"; };
 		DB495678203C0EEE00B81122 /* ComputationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputationTests.swift; sourceTree = "<group>"; };
 		DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFrallwareMac.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB49568E203C0F7A00B81122 /* FrallwareMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrallwareMac.h; sourceTree = "<group>"; };
-		DB495690203C0F7A00B81122 /* FrallwareMac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrallwareMac.m; sourceTree = "<group>"; };
 		DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrallwareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4956B0203C0FBC00B81122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB4956BA203C10C300B81122 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		DB4956BE203C10F300B81122 /* UIKit+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extra.swift"; sourceTree = "<group>"; };
+		DB4956C2203C11EE00B81122 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +112,10 @@
 		DB495654203C0C6D00B81122 /* Frallware */ = {
 			isa = PBXGroup;
 			children = (
-				DB49566E203C0EDF00B81122 /* Frallware-Bridging-Header.h */,
 				DB49565E203C0EB400B81122 /* Bindings */,
+				DB4956B9203C10AA00B81122 /* HTTP */,
+				DB4956BD203C10E300B81122 /* iOS+Extra */,
+				DB4956C1203C11E100B81122 /* ServiceLocator */,
 			);
 			path = Frallware;
 			sourceTree = "<group>";
@@ -138,8 +143,6 @@
 		DB49568D203C0F7A00B81122 /* FrallwareMac */ = {
 			isa = PBXGroup;
 			children = (
-				DB49568E203C0F7A00B81122 /* FrallwareMac.h */,
-				DB495690203C0F7A00B81122 /* FrallwareMac.m */,
 			);
 			path = FrallwareMac;
 			sourceTree = "<group>";
@@ -153,6 +156,30 @@
 			path = FrallwareTests;
 			sourceTree = "<group>";
 		};
+		DB4956B9203C10AA00B81122 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				DB4956BA203C10C300B81122 /* HTTPClient.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		DB4956BD203C10E300B81122 /* iOS+Extra */ = {
+			isa = PBXGroup;
+			children = (
+				DB4956BE203C10F300B81122 /* UIKit+Extra.swift */,
+			);
+			path = "iOS+Extra";
+			sourceTree = "<group>";
+		};
+		DB4956C1203C11E100B81122 /* ServiceLocator */ = {
+			isa = PBXGroup;
+			children = (
+				DB4956C2203C11EE00B81122 /* ServiceLocator.swift */,
+			);
+			path = ServiceLocator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -160,7 +187,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB49568F203C0F7A00B81122 /* FrallwareMac.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +305,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB495675203C0EE000B81122 /* Property.swift in Sources */,
+				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
+				DB4956BB203C10C300B81122 /* HTTPClient.swift in Sources */,
 				DB495673203C0EE000B81122 /* Computation.swift in Sources */,
 				DB495674203C0EE000B81122 /* Binding.swift in Sources */,
 				DB495676203C0EE000B81122 /* Variable.swift in Sources */,
+				DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +318,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB495691203C0F7A00B81122 /* FrallwareMac.m in Sources */,
+				DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */,
 				DB495696203C0F8000B81122 /* Computation.swift in Sources */,
+				DB4956BC203C10C300B81122 /* HTTPClient.swift in Sources */,
 				DB495697203C0F8000B81122 /* Property.swift in Sources */,
 				DB495695203C0F8000B81122 /* Binding.swift in Sources */,
 				DB495698203C0F8000B81122 /* Variable.swift in Sources */,
@@ -430,7 +460,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Frallware/Bindings/Frallware-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,7 +475,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Frallware/Bindings/Frallware-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB495673203C0EE000B81122 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49566F203C0EE000B81122 /* Computation.swift */; };
+		DB495674203C0EE000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
+		DB495675203C0EE000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
+		DB495676203C0EE000B81122 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495672203C0EE000B81122 /* Variable.swift */; };
+		DB49568F203C0F7A00B81122 /* FrallwareMac.h in Headers */ = {isa = PBXBuildFile; fileRef = DB49568E203C0F7A00B81122 /* FrallwareMac.h */; };
+		DB495691203C0F7A00B81122 /* FrallwareMac.m in Sources */ = {isa = PBXBuildFile; fileRef = DB495690203C0F7A00B81122 /* FrallwareMac.m */; };
+		DB495695203C0F8000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
+		DB495696203C0F8000B81122 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49566F203C0EE000B81122 /* Computation.swift */; };
+		DB495697203C0F8000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
+		DB495698203C0F8000B81122 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495672203C0EE000B81122 /* Variable.swift */; };
+		DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */; };
+		DB4956B7203C0FC600B81122 /* ComputationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495678203C0EEE00B81122 /* ComputationTests.swift */; };
+		DB4956B8203C0FC600B81122 /* VariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495677203C0EEE00B81122 /* VariableTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB4956B2203C0FBC00B81122 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB49564A203C0C6D00B81122 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB49568B203C0F7A00B81122;
+			remoteInfo = FrallwareMac;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DB495650203C0C6D00B81122 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DB495652203C0C6D00B81122 /* libFrallware.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrallware.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB49566E203C0EDF00B81122 /* Frallware-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Frallware-Bridging-Header.h"; sourceTree = "<group>"; };
+		DB49566F203C0EE000B81122 /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
+		DB495670203C0EE000B81122 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		DB495671203C0EE000B81122 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		DB495672203C0EE000B81122 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		DB495677203C0EEE00B81122 /* VariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableTests.swift; sourceTree = "<group>"; };
+		DB495678203C0EEE00B81122 /* ComputationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputationTests.swift; sourceTree = "<group>"; };
+		DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFrallwareMac.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB49568E203C0F7A00B81122 /* FrallwareMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrallwareMac.h; sourceTree = "<group>"; };
+		DB495690203C0F7A00B81122 /* FrallwareMac.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrallwareMac.m; sourceTree = "<group>"; };
+		DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrallwareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB4956B0203C0FBC00B81122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB49564F203C0C6D00B81122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB495689203C0F7A00B81122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB4956A9203C0FBB00B81122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB495649203C0C6D00B81122 = {
+			isa = PBXGroup;
+			children = (
+				DB495654203C0C6D00B81122 /* Frallware */,
+				DB49568D203C0F7A00B81122 /* FrallwareMac */,
+				DB4956AD203C0FBB00B81122 /* FrallwareTests */,
+				DB495653203C0C6D00B81122 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB495653203C0C6D00B81122 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB495652203C0C6D00B81122 /* libFrallware.a */,
+				DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */,
+				DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB495654203C0C6D00B81122 /* Frallware */ = {
+			isa = PBXGroup;
+			children = (
+				DB49566E203C0EDF00B81122 /* Frallware-Bridging-Header.h */,
+				DB49565E203C0EB400B81122 /* Bindings */,
+			);
+			path = Frallware;
+			sourceTree = "<group>";
+		};
+		DB49565E203C0EB400B81122 /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				DB495670203C0EE000B81122 /* Binding.swift */,
+				DB49566F203C0EE000B81122 /* Computation.swift */,
+				DB495671203C0EE000B81122 /* Property.swift */,
+				DB495672203C0EE000B81122 /* Variable.swift */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
+		DB49567B203C0EF400B81122 /* BindingsTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB495678203C0EEE00B81122 /* ComputationTests.swift */,
+				DB495677203C0EEE00B81122 /* VariableTests.swift */,
+			);
+			path = BindingsTests;
+			sourceTree = "<group>";
+		};
+		DB49568D203C0F7A00B81122 /* FrallwareMac */ = {
+			isa = PBXGroup;
+			children = (
+				DB49568E203C0F7A00B81122 /* FrallwareMac.h */,
+				DB495690203C0F7A00B81122 /* FrallwareMac.m */,
+			);
+			path = FrallwareMac;
+			sourceTree = "<group>";
+		};
+		DB4956AD203C0FBB00B81122 /* FrallwareTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB49567B203C0EF400B81122 /* BindingsTests */,
+				DB4956B0203C0FBC00B81122 /* Info.plist */,
+			);
+			path = FrallwareTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DB49568A203C0F7A00B81122 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB49568F203C0F7A00B81122 /* FrallwareMac.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DB495651203C0C6D00B81122 /* Frallware */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB49565B203C0C6D00B81122 /* Build configuration list for PBXNativeTarget "Frallware" */;
+			buildPhases = (
+				DB49564E203C0C6D00B81122 /* Sources */,
+				DB49564F203C0C6D00B81122 /* Frameworks */,
+				DB495650203C0C6D00B81122 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Frallware;
+			productName = Frallware;
+			productReference = DB495652203C0C6D00B81122 /* libFrallware.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		DB49568B203C0F7A00B81122 /* FrallwareMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB495692203C0F7A00B81122 /* Build configuration list for PBXNativeTarget "FrallwareMac" */;
+			buildPhases = (
+				DB495688203C0F7A00B81122 /* Sources */,
+				DB495689203C0F7A00B81122 /* Frameworks */,
+				DB49568A203C0F7A00B81122 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FrallwareMac;
+			productName = FrallwareMac;
+			productReference = DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		DB4956AB203C0FBB00B81122 /* FrallwareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB4956B4203C0FBC00B81122 /* Build configuration list for PBXNativeTarget "FrallwareTests" */;
+			buildPhases = (
+				DB4956A8203C0FBB00B81122 /* Sources */,
+				DB4956A9203C0FBB00B81122 /* Frameworks */,
+				DB4956AA203C0FBB00B81122 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB4956B3203C0FBC00B81122 /* PBXTargetDependency */,
+			);
+			name = FrallwareTests;
+			productName = FrallwareTests;
+			productReference = DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB49564A203C0C6D00B81122 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Frallware;
+				TargetAttributes = {
+					DB495651203C0C6D00B81122 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					DB49568B203C0F7A00B81122 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					DB4956AB203C0FBB00B81122 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DB49564D203C0C6D00B81122 /* Build configuration list for PBXProject "Frallware" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DB495649203C0C6D00B81122;
+			productRefGroup = DB495653203C0C6D00B81122 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB495651203C0C6D00B81122 /* Frallware */,
+				DB49568B203C0F7A00B81122 /* FrallwareMac */,
+				DB4956AB203C0FBB00B81122 /* FrallwareTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB4956AA203C0FBB00B81122 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB49564E203C0C6D00B81122 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB495675203C0EE000B81122 /* Property.swift in Sources */,
+				DB495673203C0EE000B81122 /* Computation.swift in Sources */,
+				DB495674203C0EE000B81122 /* Binding.swift in Sources */,
+				DB495676203C0EE000B81122 /* Variable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB495688203C0F7A00B81122 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB495691203C0F7A00B81122 /* FrallwareMac.m in Sources */,
+				DB495696203C0F8000B81122 /* Computation.swift in Sources */,
+				DB495697203C0F8000B81122 /* Property.swift in Sources */,
+				DB495695203C0F8000B81122 /* Binding.swift in Sources */,
+				DB495698203C0F8000B81122 /* Variable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB4956A8203C0FBB00B81122 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB4956B8203C0FC600B81122 /* VariableTests.swift in Sources */,
+				DB4956B7203C0FC600B81122 /* ComputationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB4956B3203C0FBC00B81122 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB49568B203C0F7A00B81122 /* FrallwareMac */;
+			targetProxy = DB4956B2203C0FBC00B81122 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		DB495659203C0C6D00B81122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DB49565A203C0C6D00B81122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB49565C203C0C6D00B81122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Frallware/Bindings/Frallware-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB49565D203C0C6D00B81122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Frallware/Bindings/Frallware-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DB495693203C0F7A00B81122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		DB495694203C0F7A00B81122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		DB4956B5203C0FBC00B81122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FrallwareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		DB4956B6203C0FBC00B81122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FrallwareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB49564D203C0C6D00B81122 /* Build configuration list for PBXProject "Frallware" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB495659203C0C6D00B81122 /* Debug */,
+				DB49565A203C0C6D00B81122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB49565B203C0C6D00B81122 /* Build configuration list for PBXNativeTarget "Frallware" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB49565C203C0C6D00B81122 /* Debug */,
+				DB49565D203C0C6D00B81122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB495692203C0F7A00B81122 /* Build configuration list for PBXNativeTarget "FrallwareMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB495693203C0F7A00B81122 /* Debug */,
+				DB495694203C0F7A00B81122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB4956B4203C0FBC00B81122 /* Build configuration list for PBXNativeTarget "FrallwareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB4956B5203C0FBC00B81122 /* Debug */,
+				DB4956B6203C0FBC00B81122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB49564A203C0C6D00B81122 /* Project object */;
+}

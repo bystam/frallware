@@ -12,11 +12,11 @@ public enum Service {
 
     private static var container: ServiceContainer!
 
-    static func install(container: ServiceContainer) {
+    public static func install(container: ServiceContainer) {
         self.container = container
     }
 
-    static func find<T>(type: T.Type) -> T {
+    public static func find<T>(type: T.Type) -> T {
         // Force downcast here
         return container.service(ofType: type) as! T
     }

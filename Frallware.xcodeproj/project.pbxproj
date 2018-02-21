@@ -23,6 +23,7 @@
 		DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BE203C10F300B81122 /* UIKit+Extra.swift */; };
 		DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 		DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
+		DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		DB4956BA203C10C300B81122 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		DB4956BE203C10F300B81122 /* UIKit+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extra.swift"; sourceTree = "<group>"; };
 		DB4956C2203C11EE00B81122 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		DB4956BD203C10E300B81122 /* iOS+Extra */ = {
 			isa = PBXGroup;
 			children = (
+				DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */,
 				DB4956BE203C10F300B81122 /* UIKit+Extra.swift */,
 			);
 			path = "iOS+Extra";
@@ -307,6 +310,7 @@
 				DB495675203C0EE000B81122 /* Property.swift in Sources */,
 				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
 				DB4956BB203C10C300B81122 /* HTTPClient.swift in Sources */,
+				DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */,
 				DB495673203C0EE000B81122 /* Computation.swift in Sources */,
 				DB495674203C0EE000B81122 /* Binding.swift in Sources */,
 				DB495676203C0EE000B81122 /* Variable.swift in Sources */,

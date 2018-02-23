@@ -160,7 +160,7 @@ public extension HTTPClient {
             return self
         }
 
-        public func complete(on queue: DispatchQueue) -> Task<T> {
+        public func completing(on queue: DispatchQueue) -> Task<T> {
             lock.lock()
             defer { lock.unlock() }
 

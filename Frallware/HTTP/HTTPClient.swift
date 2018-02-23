@@ -20,18 +20,38 @@ public extension HTTPMethod {
     public static let delete = HTTPMethod("DELETE")
 }
 
+
+public protocol HTTPRequestMiddleware {
+    func prepare(request: inout URLRequest)
+}
+
+public enum HTTPResponseMiddlewareResult {
+    case data(Data)
+    case error(Error)
+}
+
+public protocol HTTPResponseMiddleware {
+    func process(data: Data) -> HTTPResponseMiddlewareResult
+}
+
+
 public class HTTPClient {
 
     public enum ClientError: Error {
         case malformedPath
+        case missingResponseBody
     }
 
     private static let urlSession = URLSession(configuration: .default)
 
     private let baseURL: URL
+    private let requestMiddleware: HTTPRequestMiddleware?
+    private let responseMiddleware: HTTPResponseMiddleware?
 
-    public init(baseURL: URL) {
+    public init(baseURL: URL, requestMiddleware: HTTPRequestMiddleware? = nil, responseMiddleware: HTTPResponseMiddleware? = nil) {
         self.baseURL = baseURL
+        self.requestMiddleware = requestMiddleware
+        self.responseMiddleware = responseMiddleware
     }
 
     public func voidRequest(_ method: HTTPMethod, path: String, body: Data?) -> Task<Void> {
@@ -66,14 +86,34 @@ public class HTTPClient {
             request.httpBody = body
         }
 
+        requestMiddleware?.prepare(request: &request)
+
         let task = Task<T>()
         task.task = HTTPClient.urlSession.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 task.consume(error: error)
-            } else if let data = data, let task = task as? Task<Data> {
-                task.consume(value: data)
-            } else if let task = task as? Task<Void> {
-                task.consume(value: ())
+                return
+            }
+
+            let result = data.map {
+                self.responseMiddleware?.process(data: $0) ?? .data($0)
+            }
+
+            switch result {
+            case .error(let error)?:
+                task.consume(error: error)
+
+            case .data(let data)?:
+                if let task = task as? Task<Data> {
+                    task.consume(value: data)
+                } else {
+                    fallthrough
+                }
+
+            case nil:
+                if let task = task as? Task<Void> {
+                    task.consume(value: ())
+                }
             }
         }
         return task

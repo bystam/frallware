@@ -15,10 +15,16 @@ public struct HTTPMethod {
 public extension HTTPMethod {
     public static let get = HTTPMethod("GET")
     public static let post = HTTPMethod("POST")
+    public static let put = HTTPMethod("PUT")
+    public static let patch = HTTPMethod("PATCH")
     public static let delete = HTTPMethod("DELETE")
 }
 
 public class HTTPClient {
+
+    public enum ClientError: Error {
+        case malformedPath
+    }
 
     private static let urlSession = URLSession(configuration: .default)
 
@@ -30,27 +36,27 @@ public class HTTPClient {
 
     public func voidRequest(_ method: HTTPMethod, path: String, body: Data?) -> Task<Void> {
         guard let url = URL(string: baseURL.absoluteString.appending(path)) else {
-            fatalError()
+            return task(with: ClientError.malformedPath)
         }
-        return request(method, url: url, body: body, task: VoidTask())
+        return request(method, url: url, body: body, type: Void.self)
     }
 
     public func voidRequest(_ method: HTTPMethod, url: URL, body: Data?) -> Task<Void> {
-        return request(method, url: url, body: body, task: VoidTask())
+        return request(method, url: url, body: body, type: Void.self)
     }
 
     public func dataRequest(_ method: HTTPMethod, path: String, body: Data?) -> Task<Data> {
         guard let url = URL(string: baseURL.absoluteString.appending(path)) else {
-            fatalError()
+            return task(with: ClientError.malformedPath)
         }
-        return request(method, url: url, body: body, task: DataTask())
+        return request(method, url: url, body: body, type: Data.self)
     }
 
     public func dataRequest(_ method: HTTPMethod, url: URL, body: Data?) -> Task<Data> {
-        return request(method, url: url, body: body, task: DataTask())
+        return request(method, url: url, body: body, type: Data.self)
     }
 
-    private func request<T>(_ method: HTTPMethod, url: URL, body: Data?, task: Task<T>) -> Task<T> {
+    private func request<T>(_ method: HTTPMethod, url: URL, body: Data?, type: T.Type) -> Task<T> {
         var request = URLRequest(url: url)
         request.httpMethod = method.stringValue
 
@@ -60,13 +66,22 @@ public class HTTPClient {
             request.httpBody = body
         }
 
+        let task = Task<T>()
         task.task = HTTPClient.urlSession.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 task.consume(error: error)
-            } else if let data = data {
-                task.consume(data: data)
+            } else if let data = data, let task = task as? Task<Data> {
+                task.consume(value: data)
+            } else if let task = task as? Task<Void> {
+                task.consume(value: ())
             }
         }
+        return task
+    }
+
+    private func task<T>(with error: Error) -> Task<T> {
+        let task = Task<T>()
+        task.error = error
         return task
     }
 }
@@ -75,44 +90,77 @@ public extension HTTPClient {
 
     public class Task<T> {
 
-        fileprivate var task: URLSessionTask!
+        fileprivate var task: URLSessionTask?
 
         fileprivate var callbackQueue: DispatchQueue?
         fileprivate var successHandler: ((T) -> Void)?
         fileprivate var errorHandler: ((Error) -> Void)?
 
+        fileprivate var consumeHandlers: [(T) -> Void] = []
+        fileprivate var result: T?
+        fileprivate var error: Error?
+
+        fileprivate let lock = NSLock()
+
         @discardableResult
         public func start() -> Task<T> {
-            task.resume()
+            lock.lock()
+            defer { lock.unlock() }
+
+            task?.resume()
             return self
         }
 
         @discardableResult
         public func cancel() -> Task<T> {
-            task.cancel()
+            lock.lock()
+            defer { lock.unlock() }
+
+            task?.cancel()
             return self
         }
 
-        public func dispatch(on queue: DispatchQueue) -> Task<T> {
+        public func complete(on queue: DispatchQueue) -> Task<T> {
+            lock.lock()
+            defer { lock.unlock() }
+
             callbackQueue = queue
             return self
         }
 
         public func onSuccess(handler: @escaping (T) -> Void) -> Task<T> {
+            lock.lock()
+            defer { lock.unlock() }
+
             successHandler = handler
+
+            if let result = result {
+                consume(value: result)
+            }
+
             return self
         }
 
         public func onError(handler: @escaping (Error) -> Void) -> Task<T> {
+            lock.lock()
+            defer { lock.unlock() }
+
             errorHandler = handler
+
+            if let error = error {
+                consume(error: error)
+            }
+
             return self
         }
 
-        fileprivate func consume(data: Data) {
-            fatalError("Override in subclasses")
-        }
+        fileprivate func consume(value: T) {
+            lock.lock()
+            defer { lock.unlock() }
 
-        fileprivate func finish(with value: T) {
+            self.result = value
+            consumeHandlers.forEach { $0(value) }
+
             if let queue = callbackQueue {
                 queue.async {
                     self.successHandler?(value)
@@ -123,6 +171,11 @@ public extension HTTPClient {
         }
 
         fileprivate func consume(error: Error) {
+            lock.lock()
+            defer { lock.unlock() }
+
+            self.error = error
+
             if let queue = callbackQueue {
                 queue.async {
                     self.errorHandler?(error)
@@ -132,48 +185,27 @@ public extension HTTPClient {
             }
         }
     }
-
-    fileprivate class VoidTask: Task<Void> {
-        override func consume(data: Data) {
-            finish(with: ())
-        }
-    }
-
-    fileprivate class DataTask: Task<Data> {
-        override func consume(data: Data) {
-            finish(with: data)
-        }
-    }
-
-    fileprivate class DecodableTask<U: Decodable>: Task<U> {
-
-        private let decoder: JSONDecoder
-
-        init(decoder: JSONDecoder) {
-            self.decoder = decoder
-        }
-
-        override func consume(data: Data) {
-            do {
-                let value = try decoder.decode(U.self, from: data)
-                finish(with: value)
-            } catch let error {
-                consume(error: error)
-            }
-        }
-    }
 }
 
 public extension HTTPClient.Task where T == Data {
 
     public func map<U: Decodable>(to type: U.Type, with decoder: JSONDecoder = JSONDecoder()) -> HTTPClient.Task<U> {
-        let task = HTTPClient.DecodableTask<U>(decoder: decoder)
+        lock.lock()
+        defer { lock.unlock() }
+
+        let task = HTTPClient.Task<U>()
         task.task = self.task
-        task.errorHandler = self.errorHandler
         task.callbackQueue = self.callbackQueue
-        self.successHandler = { data in
-            task.consume(data: data)
+
+        consumeHandlers.append { (data) in
+            do {
+                let result = try decoder.decode(U.self, from: data)
+                task.consume(value: result)
+            } catch let error {
+                task.consume(error: error)
+            }
         }
+
         return task
     }
 }

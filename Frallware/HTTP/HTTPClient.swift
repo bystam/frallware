@@ -25,13 +25,8 @@ public protocol HTTPRequestMiddleware {
     func prepare(request: inout URLRequest)
 }
 
-public enum HTTPResponseMiddlewareResult {
-    case data(Data)
-    case error(Error)
-}
-
 public protocol HTTPResponseMiddleware {
-    func process(data: Data) -> HTTPResponseMiddlewareResult
+    func error(in data: Data) -> Error?
 }
 
 
@@ -95,25 +90,17 @@ public class HTTPClient {
                 return
             }
 
-            let result = data.map {
-                self.responseMiddleware?.process(data: $0) ?? .data($0)
+            if let error = data.flatMap({ self.responseMiddleware?.error(in: $0) }) {
+                task.consume(error: error)
+                return
             }
 
-            switch result {
-            case .error(let error)?:
-                task.consume(error: error)
-
-            case .data(let data)?:
-                if let task = task as? Task<Data> {
-                    task.consume(value: data)
-                } else {
-                    fallthrough
-                }
-
-            case nil:
-                if let task = task as? Task<Void> {
-                    task.consume(value: ())
-                }
+            if let data = data, let task = task as? Task<Data> {
+                task.consume(value: data)
+            } else if let task = task as? Task<Void> {
+                task.consume(value: ())
+            } else {
+                task.consume(error: ClientError.missingResponseBody)
             }
         }
         return task

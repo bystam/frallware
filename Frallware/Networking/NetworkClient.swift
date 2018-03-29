@@ -27,7 +27,57 @@ public class NetworkClient {
     }
 
     public func send<C: NetworkCall & JSONResponseCall>(_ call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) {
-        _send(call) { (data, error) in
+        let request = _request(from: call)
+        let task = session.dataTask(with: request, completionHandler: _bodyResponse(from: call, callback: callback))
+        task.resume()
+    }
+
+    public func send<C: NetworkCall & JSONRequestCall>(_ call: C, callback: @escaping (Error?) -> Void) {
+        do {
+            let request = try _bodyRequest(from: call)
+            let task = session.dataTask(with: request, completionHandler: _voidResponse(from: callback))
+            task.resume()
+        } catch let error {
+            callback(error)
+        }
+    }
+
+    public func send<C: NetworkCall & JSONRequestCall & JSONResponseCall>(_ call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) {
+        do {
+            let request = try _bodyRequest(from: call)
+            let task = session.dataTask(with: request, completionHandler: _bodyResponse(from: call, callback: callback))
+            task.resume()
+        } catch let error {
+            callback(.error(error))
+        }
+    }
+
+    private func _bodyRequest<C: NetworkCall & JSONRequestCall>(from call: C) throws -> URLRequest {
+        var request = _request(from: call)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try call.bodyEncoder.encode(call.body)
+        return request
+    }
+
+    private func _request<C: NetworkCall>(from call: C) -> URLRequest {
+        var request = URLRequest(url: call.url,
+                                 cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
+                                 timeoutInterval: 20.0)
+        request.httpMethod = call.method.rawValue
+        call.headers.forEach { field, value in
+            request.addValue(value, forHTTPHeaderField: field)
+        }
+        return request
+    }
+
+    private func _voidResponse(from callback: @escaping (Error?) -> Void) -> (Data?, URLResponse?, Error?) -> Void {
+        return { data, response, error in
+            callback(error)
+        }
+    }
+
+    private func _bodyResponse<C: NetworkCall & JSONResponseCall>(from call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) -> (Data?, URLResponse?, Error?) -> Void {
+        return { data, response, error in
             guard let data = data, !data.isEmpty else {
                 callback(.error(error ?? MissingBodyError(url: call.url)))
                 return
@@ -40,54 +90,5 @@ public class NetworkClient {
                 callback(.error(error))
             }
         }
-    }
-
-    public func send<C: NetworkCall>(_ call: C, callback: @escaping (Error?) -> Void) {
-        _send(call) { data, error in
-            callback(error)
-        }
-    }
-
-    private func _send<C: NetworkCall>(_ call: C, callback: @escaping (Data?, Error?) -> Void) {
-        var request = URLRequest(url: call.url,
-                                 cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                 timeoutInterval: 20.0)
-        request.httpMethod = call.method.rawValue
-        call.headers.forEach { field, value in
-            request.addValue(value, forHTTPHeaderField: field)
-        }
-
-        request.setValue(call.bodyMimeType, forHTTPHeaderField: "Content-Type")
-        request.httpBody = call.bodyData
-
-        let task = session.dataTask(with: request) { (data, response, error) in
-
-            // TODO: error middleware
-
-            callback(data, error)
-        }
-        task.resume()
-    }
-}
-
-private extension NetworkCall {
-
-    var bodyMimeType: String? {
-        return nil
-    }
-
-    var bodyData: Data? {
-        return nil
-    }
-}
-
-private extension NetworkCall where Self: JSONRequestCall {
-
-    var bodyMimeType: String? {
-        return "application/json"
-    }
-
-    var bodyData: Data? {
-        return try? bodyEncoder.encode(body)
     }
 }

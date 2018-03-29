@@ -94,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB01D1DF206D31150078925E /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
 		DB237BDE206D17C400665ACD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				DB49567B203C0EF400B81122 /* BindingsTests */,
+				DB01D1DF206D31150078925E /* NetworkingTests */,
 				DB4956B0203C0FBC00B81122 /* Info.plist */,
 			);
 			path = FrallwareTests;

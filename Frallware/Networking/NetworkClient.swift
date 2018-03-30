@@ -22,18 +22,23 @@ public class NetworkTask<C: NetworkCall> {
     public let call: C
 
     fileprivate var task: URLSessionTask?
-    private var responseHandler: ((Result<Data?>) -> Void)?
+    private var successHandler: ((Data?) throws -> Void)?
+    private var errorHandler: ((Error) -> Void)?
 
     fileprivate init(call: C) {
         self.call = call
     }
 
-    fileprivate func success(_ data: Data?) {
-        responseHandler?(.success(data))
+    fileprivate func consume(data: Data?) {
+        do {
+            try successHandler?(data)
+        } catch let error {
+            errorHandler?(error)
+        }
     }
 
     fileprivate func consume(error: Error) {
-        responseHandler?(.error(error))
+        errorHandler?(error)
     }
 
 
@@ -49,24 +54,25 @@ public class NetworkTask<C: NetworkCall> {
         return self
     }
 
-    public func onComplete(_ handler: @escaping (Result<Void>) -> Void) -> NetworkTask<C> {
-        self.responseHandler = { result in
-            let voidResult = result.map { _ in () }
-            handler(voidResult)
+    public func onComplete(_ handler: @escaping () -> Void) -> NetworkTask<C> {
+        self.successHandler = { _ in
+            handler()
         }
         return self
     }
 
-    public func onData(_ handler: @escaping (Result<Data>) -> Void) -> NetworkTask<C> {
-        self.responseHandler = { result in
-            let dataResult = result.map { data -> Data in
-                guard let data = data else {
-                    throw MissingBodyError(url: self.task?.currentRequest?.url)
-                }
-                return data
+    public func onData(_ handler: @escaping (Data) throws -> Void) -> NetworkTask<C> {
+        self.successHandler = { [weak self] (data: Data?) in
+            guard let data = data, !data.isEmpty else {
+                throw MissingBodyError(url: self?.task?.currentRequest?.url)
             }
-            handler(dataResult)
+            try handler(data)
         }
+        return self
+    }
+
+    public func onError(_ handler: @escaping (Error) -> Void) -> NetworkTask<C> {
+        self.errorHandler = handler
         return self
     }
 }
@@ -107,7 +113,7 @@ public class NetworkClient {
             if let error = error {
                 networkTask.consume(error: error)
             } else {
-                networkTask.success(data)
+                networkTask.consume(data: data)
             }
         }
         return networkTask

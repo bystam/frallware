@@ -5,9 +5,7 @@
 import Foundation
 import Frallware
 
-protocol FoxFinderCall: RelativeNetworkCall {
-    
-}
+protocol FoxFinderCall: RelativeNetworkCall {}
 
 extension FoxFinderCall {
     var baseURL: URL {
@@ -25,6 +23,4 @@ struct RandomFoxCall: FoxFinderCall, JSONResponseCall {
 
     let path: String = "/floof"
     let method: HTTPMethod = .get
-    let queryParameters: [String : String] = [:]
 }
-

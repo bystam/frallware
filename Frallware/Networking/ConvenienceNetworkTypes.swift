@@ -84,12 +84,11 @@ public extension JSONResponseCall {
 
 public extension NetworkTask where C: JSONResponseCall {
 
-    func onResponse(_ handler: @escaping (Result<C.ResponseBody>) -> Void) -> NetworkTask<C> {
-        return self.onData { result in
-            let decodedResult = result.map { data in
-                return try self.call.bodyDecoder.decode(C.ResponseBody.self, from: data)
-            }
-            handler(decodedResult)
+    func onResponse(_ handler: @escaping (C.ResponseBody) -> Void) -> NetworkTask<C> {
+        let call = self.call
+        return self.onData { data in
+            let decoded = try call.bodyDecoder.decode(C.ResponseBody.self, from: data)
+            handler(decoded)
         }
     }
 }

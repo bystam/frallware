@@ -4,12 +4,73 @@
 
 import Foundation
 
-public class NetworkClient {
+private struct MissingBodyError: Error {
 
-    public enum Result<T> {
-        case success(T)
-        case error(Error)
+    let url: URL?
+
+    var localizedDescription: String {
+        guard let url = url else {
+            return "Response body was empty"
+        }
+        return "Response body was empty for URL: \(url)"
     }
+}
+
+
+public class NetworkTask<C: NetworkCall> {
+
+    public let call: C
+
+    fileprivate var task: URLSessionTask?
+    private var responseHandler: ((Result<Data?>) -> Void)?
+
+    fileprivate init(call: C) {
+        self.call = call
+    }
+
+    fileprivate func success(_ data: Data?) {
+        responseHandler?(.success(data))
+    }
+
+    fileprivate func consume(error: Error) {
+        responseHandler?(.error(error))
+    }
+
+
+    public func start() -> NetworkTask<C> {
+        task?.resume()
+        return self
+    }
+
+    public func cancel() -> NetworkTask<C> {
+        task?.cancel()
+        return self
+    }
+
+    public func onComplete(_ handler: @escaping (Result<Void>) -> Void) -> NetworkTask<C> {
+        self.responseHandler = { result in
+            let voidResult = result.map { _ in () }
+            handler(voidResult)
+        }
+        return self
+    }
+
+    public func onData(_ handler: @escaping (Result<Data>) -> Void) -> NetworkTask<C> {
+        self.responseHandler = { result in
+            let dataResult = result.map { data -> Data in
+                guard let data = data else {
+                    throw MissingBodyError(url: self.task?.currentRequest?.url)
+                }
+                return data
+            }
+            handler(dataResult)
+        }
+        return self
+    }
+}
+
+
+public class NetworkClient {
 
     public struct MissingBodyError: Error {
         let url: URL
@@ -26,69 +87,29 @@ public class NetworkClient {
         self.session = session
     }
 
-    public func send<C: NetworkCall & JSONResponseCall>(_ call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) {
-        let request = _request(from: call)
-        let task = session.dataTask(with: request, completionHandler: _bodyResponse(from: call, callback: callback))
-        task.resume()
-    }
-
-    public func send<C: NetworkCall & JSONRequestCall>(_ call: C, callback: @escaping (Error?) -> Void) {
-        do {
-            let request = try _bodyRequest(from: call)
-            let task = session.dataTask(with: request, completionHandler: _voidResponse(from: callback))
-            task.resume()
-        } catch let error {
-            callback(error)
-        }
-    }
-
-    public func send<C: NetworkCall & JSONRequestCall & JSONResponseCall>(_ call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) {
-        do {
-            let request = try _bodyRequest(from: call)
-            let task = session.dataTask(with: request, completionHandler: _bodyResponse(from: call, callback: callback))
-            task.resume()
-        } catch let error {
-            callback(.error(error))
-        }
-    }
-
-    private func _bodyRequest<C: NetworkCall & JSONRequestCall>(from call: C) throws -> URLRequest {
-        var request = _request(from: call)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try call.bodyEncoder.encode(call.body)
-        return request
-    }
-
-    private func _request<C: NetworkCall>(from call: C) -> URLRequest {
+    public func request<C: NetworkCall>(_ call: C) -> NetworkTask<C> {
         var request = URLRequest(url: call.url,
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 20.0)
+
         request.httpMethod = call.method.rawValue
         call.headers.forEach { field, value in
             request.addValue(value, forHTTPHeaderField: field)
         }
-        return request
-    }
 
-    private func _voidResponse(from callback: @escaping (Error?) -> Void) -> (Data?, URLResponse?, Error?) -> Void {
-        return { data, response, error in
-            callback(error)
+        if let bodyCall = call as? NetworkBodyCall {
+            request.setValue(bodyCall.bodyMimeType, forHTTPHeaderField: "Content-Type")
+            request.httpBody = bodyCall.bodyData
         }
-    }
 
-    private func _bodyResponse<C: NetworkCall & JSONResponseCall>(from call: C, callback: @escaping (Result<C.ResponseBody>) -> Void) -> (Data?, URLResponse?, Error?) -> Void {
-        return { data, response, error in
-            guard let data = data, !data.isEmpty else {
-                callback(.error(error ?? MissingBodyError(url: call.url)))
-                return
-            }
-
-            do {
-                let responseBody = try call.bodyDecoder.decode(C.ResponseBody.self, from: data)
-                callback(.success(responseBody))
-            } catch let error {
-                callback(.error(error))
+        let networkTask = NetworkTask<C>(call: call)
+        networkTask.task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                networkTask.consume(error: error)
+            } else {
+                networkTask.success(data)
             }
         }
+        return networkTask
     }
 }

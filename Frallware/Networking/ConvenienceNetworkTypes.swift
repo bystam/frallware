@@ -30,12 +30,16 @@ public extension RelativeNetworkCall {
         }
         return components.url ?? baseURL
     }
+
+    var queryParameters: [String : String] {
+        return [:]
+    }
 }
 
 
 // MARK: - JSON request
 
-public protocol JSONRequestCall: NetworkBodyCall {
+public protocol JSONRequestCall {
 
     associatedtype RequestBody: Encodable
 
@@ -45,16 +49,19 @@ public protocol JSONRequestCall: NetworkBodyCall {
 
 public extension JSONRequestCall {
 
+    var bodyEncoder: JSONEncoder {
+        return JSONEncoder()
+    }
+}
+
+public extension NetworkCall where Self: JSONRequestCall {
+
     var bodyMimeType: String? {
         return "application/json"
     }
 
     var bodyData: Data? {
         return try? bodyEncoder.encode(body)
-    }
-
-    var bodyEncoder: JSONEncoder {
-        return JSONEncoder()
     }
 }
 

@@ -95,14 +95,12 @@ public class NetworkClient {
                                  timeoutInterval: 20.0)
 
         request.httpMethod = call.method.rawValue
-        call.headers.forEach { field, value in
+        call.httpHeaders.forEach { field, value in
             request.addValue(value, forHTTPHeaderField: field)
         }
 
-        if let bodyCall = call as? NetworkBodyCall {
-            request.setValue(bodyCall.bodyMimeType, forHTTPHeaderField: "Content-Type")
-            request.httpBody = bodyCall.bodyData
-        }
+        request.setValue(call.bodyMimeType, forHTTPHeaderField: "Content-Type")
+        request.httpBody = call.bodyData
 
         let networkTask = NetworkTask<C>(call: call)
         networkTask.task = session.dataTask(with: request) { data, response, error in

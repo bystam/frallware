@@ -15,13 +15,24 @@ public protocol NetworkCall {
 
     var method: HTTPMethod { get }
     var url: URL { get }
-    var headers: [String : String] { get }
 
-}
-
-public protocol NetworkBodyCall: NetworkCall {
+    var httpHeaders: [String : String] { get }
 
     var bodyMimeType: String? { get }
     var bodyData: Data? { get }
+}
 
+public extension NetworkCall {
+
+    var httpHeaders: [String : String] {
+        return [:]
+    }
+
+    var bodyMimeType: String? {
+        return nil
+    }
+
+    var bodyData: Data? {
+        return nil
+    }
 }

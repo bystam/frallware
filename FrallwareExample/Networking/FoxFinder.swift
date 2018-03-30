@@ -13,10 +13,6 @@ extension FoxFinderCall {
     var baseURL: URL {
         return URL(string: "https://randomfox.ca")!
     }
-
-    var headers: [String : String] {
-        return [:]
-    }
 }
 
 

@@ -4,7 +4,6 @@
 
 import Foundation
 
-
 // MARK: - Relative Network Call
 
 public protocol RelativeNetworkCall: NetworkCall {
@@ -33,6 +32,26 @@ public extension RelativeNetworkCall {
 
     var queryParameters: [String : String] {
         return [:]
+    }
+}
+
+
+// MARK: - Typed Response
+
+public protocol TypedResponseCall {
+    associatedtype ResponseBody
+
+    func decodeResponse(data: Data) throws -> ResponseBody
+}
+
+public extension NetworkTask where C: TypedResponseCall {
+
+    func onResponse(_ handler: @escaping (C.ResponseBody) -> Void) -> NetworkTask<C> {
+        let call = self.call
+        return self.onData { data in
+            let typed = try call.decodeResponse(data: data)
+            handler(typed)
+        }
     }
 }
 
@@ -68,10 +87,7 @@ public extension NetworkCall where Self: JSONRequestCall {
 
 // MARK: - JSON response
 
-public protocol JSONResponseCall {
-
-    associatedtype ResponseBody: Decodable
-
+public protocol JSONResponseCall: TypedResponseCall where ResponseBody: Decodable {
     var bodyDecoder: JSONDecoder { get }
 }
 
@@ -80,15 +96,8 @@ public extension JSONResponseCall {
     var bodyDecoder: JSONDecoder {
         return JSONDecoder()
     }
-}
 
-public extension NetworkTask where C: JSONResponseCall {
-
-    func onResponse(_ handler: @escaping (C.ResponseBody) -> Void) -> NetworkTask<C> {
-        let call = self.call
-        return self.onData { data in
-            let decoded = try call.bodyDecoder.decode(C.ResponseBody.self, from: data)
-            handler(decoded)
-        }
+    func decodeResponse(data: Data) throws -> ResponseBody {
+        return try bodyDecoder.decode(ResponseBody.self, from: data)
     }
 }

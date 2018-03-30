@@ -27,24 +27,16 @@ class ViewController: UIViewController {
     private func loadRandomFox() {
         let call = RandomFoxCall()
         client.request(call)
-            .onResponse { response in
-                self.loadImage(at: response.image)
-            }
-            .onError { error in
-                print(error)
-            }
+            .onResponse { self.loadImage(at: $0.image) }
+            .onError(printError)
             .start()
     }
 
     private func loadImage(at url: URL) {
         let call = FetchImageCall(url: url)
         client.request(call)
-            .onData { data in
-                self.setImage(UIImage(data: data))
-            }
-            .onError { error in
-                print(error)
-            }
+            .onResponse(setImage)
+            .onError(printError)
             .start()
     }
 
@@ -52,5 +44,9 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.imageView.image = image
         }
+    }
+
+    private func printError(_ error: Error) {
+        print(error)
     }
 }

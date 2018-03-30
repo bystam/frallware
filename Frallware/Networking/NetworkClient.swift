@@ -80,15 +80,6 @@ public class NetworkTask<C: NetworkCall> {
 
 public class NetworkClient {
 
-    public struct MissingBodyError: Error {
-        let url: URL
-
-        public var localizedDescription: String {
-            return "Response body was empty for URL: \(url)"
-        }
-    }
-
-
     private let session: URLSession
 
     public init(session: URLSession = .shared) {

@@ -5,10 +5,21 @@
 import Foundation
 
 public enum HTTPMethod: String {
-    case get = "GET"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
+    case options = "OPTIONS"
+    case get     = "GET"
+    case head    = "HEAD"
+    case post    = "POST"
+    case put     = "PUT"
+    case patch   = "PATCH"
+    case delete  = "DELETE"
+    case trace   = "TRACE"
+    case connect = "CONNECT"
+}
+
+public protocol NetworkErrorMiddleware {
+
+    func decodeError(from data: Data) -> Error?
+
 }
 
 public protocol NetworkCall {
@@ -20,6 +31,8 @@ public protocol NetworkCall {
 
     var bodyMimeType: String? { get }
     var bodyData: Data? { get }
+
+    var errorMiddleware: NetworkErrorMiddleware? { get }
 }
 
 public extension NetworkCall {
@@ -33,6 +46,10 @@ public extension NetworkCall {
     }
 
     var bodyData: Data? {
+        return nil
+    }
+
+    var errorMiddleware: NetworkErrorMiddleware? {
         return nil
     }
 }

@@ -30,6 +30,11 @@ public class NetworkTask<C: NetworkCall> {
     }
 
     fileprivate func consume(data: Data?) {
+        if let error = data.flatMap({ call.errorMiddleware?.decodeError(from: $0) }) {
+            errorHandler?(error)
+            return
+        }
+
         do {
             try successHandler?(data)
         } catch let error {

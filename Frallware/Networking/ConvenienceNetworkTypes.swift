@@ -41,7 +41,7 @@ public extension RelativeNetworkCall {
 public protocol TypedResponseCall {
     associatedtype ResponseBody
 
-    func decodeResponse(data: Data) throws -> ResponseBody
+    func decodeResponse(from data: Data) throws -> ResponseBody
 }
 
 public extension NetworkTask where C: TypedResponseCall {
@@ -49,7 +49,7 @@ public extension NetworkTask where C: TypedResponseCall {
     func onResponse(_ handler: @escaping (C.ResponseBody) -> Void) -> NetworkTask<C> {
         let call = self.call
         return self.onData { data in
-            let typed = try call.decodeResponse(data: data)
+            let typed = try call.decodeResponse(from: data)
             handler(typed)
         }
     }
@@ -97,7 +97,7 @@ public extension JSONResponseCall {
         return JSONDecoder()
     }
 
-    func decodeResponse(data: Data) throws -> ResponseBody {
+    func decodeResponse(from data: Data) throws -> ResponseBody {
         return try bodyDecoder.decode(ResponseBody.self, from: data)
     }
 }

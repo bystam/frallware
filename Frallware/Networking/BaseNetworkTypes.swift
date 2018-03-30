@@ -25,11 +25,3 @@ public protocol NetworkBodyCall: NetworkCall {
     var bodyData: Data? { get }
 
 }
-
-
-public extension NetworkCall {
-
-    var headers: [String : String] {
-        return [:]
-    }
-}

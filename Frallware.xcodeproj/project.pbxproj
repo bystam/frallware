@@ -30,6 +30,14 @@
 		DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 		DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 		DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */; };
+		DBF83943206E7CF400EB2237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83942206E7CF400EB2237 /* AppDelegate.swift */; };
+		DBF83945206E7CF400EB2237 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83944206E7CF400EB2237 /* ViewController.swift */; };
+		DBF83948206E7CF400EB2237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF83946206E7CF400EB2237 /* Main.storyboard */; };
+		DBF8394A206E7CF400EB2237 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBF83949206E7CF400EB2237 /* Assets.xcassets */; };
+		DBF8394D206E7CF400EB2237 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF8394B206E7CF400EB2237 /* LaunchScreen.storyboard */; };
+		DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB495652203C0C6D00B81122 /* libFrallware.a */; };
+		DBF8395A206E839100EB2237 /* FoxFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83959206E839100EB2237 /* FoxFinder.swift */; };
+		DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8395B206E841F00EB2237 /* ImageFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +80,15 @@
 		DB4956BE203C10F300B81122 /* UIKit+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extra.swift"; sourceTree = "<group>"; };
 		DB4956C2203C11EE00B81122 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderTypes.swift; sourceTree = "<group>"; };
+		DBF83940206E7CF400EB2237 /* FrallwareExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrallwareExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF83942206E7CF400EB2237 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBF83944206E7CF400EB2237 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBF83947206E7CF400EB2237 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBF83949206E7CF400EB2237 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBF8394C206E7CF400EB2237 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DBF8394E206E7CF400EB2237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBF83959206E839100EB2237 /* FoxFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoxFinder.swift; sourceTree = "<group>"; };
+		DBF8395B206E841F00EB2237 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +111,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBF8393D206E7CF400EB2237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +156,9 @@
 				DB495654203C0C6D00B81122 /* Frallware */,
 				DB49568D203C0F7A00B81122 /* FrallwareMac */,
 				DB4956AD203C0FBB00B81122 /* FrallwareTests */,
+				DBF83941206E7CF400EB2237 /* FrallwareExample */,
 				DB495653203C0C6D00B81122 /* Products */,
+				DBF83957206E7D8B00EB2237 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +168,7 @@
 				DB495652203C0C6D00B81122 /* libFrallware.a */,
 				DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */,
 				DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */,
+				DBF83940206E7CF400EB2237 /* FrallwareExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,6 +239,36 @@
 			path = ServiceLocator;
 			sourceTree = "<group>";
 		};
+		DBF83941206E7CF400EB2237 /* FrallwareExample */ = {
+			isa = PBXGroup;
+			children = (
+				DBF83942206E7CF400EB2237 /* AppDelegate.swift */,
+				DBF83946206E7CF400EB2237 /* Main.storyboard */,
+				DBF83944206E7CF400EB2237 /* ViewController.swift */,
+				DBF83952206E7D0500EB2237 /* Networking */,
+				DBF83949206E7CF400EB2237 /* Assets.xcassets */,
+				DBF8394B206E7CF400EB2237 /* LaunchScreen.storyboard */,
+				DBF8394E206E7CF400EB2237 /* Info.plist */,
+			);
+			path = FrallwareExample;
+			sourceTree = "<group>";
+		};
+		DBF83952206E7D0500EB2237 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				DBF8395B206E841F00EB2237 /* ImageFetcher.swift */,
+				DBF83959206E839100EB2237 /* FoxFinder.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		DBF83957206E7D8B00EB2237 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -276,6 +334,23 @@
 			productReference = DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DBF8393F206E7CF400EB2237 /* FrallwareExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBF83951206E7CF400EB2237 /* Build configuration list for PBXNativeTarget "FrallwareExample" */;
+			buildPhases = (
+				DBF8393C206E7CF400EB2237 /* Sources */,
+				DBF8393D206E7CF400EB2237 /* Frameworks */,
+				DBF8393E206E7CF400EB2237 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FrallwareExample;
+			productName = FrallwareExample;
+			productReference = DBF83940206E7CF400EB2237 /* FrallwareExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -299,6 +374,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					DBF8393F206E7CF400EB2237 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = DB49564D203C0C6D00B81122 /* Build configuration list for PBXProject "Frallware" */;
@@ -307,6 +386,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DB495649203C0C6D00B81122;
 			productRefGroup = DB495653203C0C6D00B81122 /* Products */;
@@ -316,6 +396,7 @@
 				DB495651203C0C6D00B81122 /* Frallware */,
 				DB49568B203C0F7A00B81122 /* FrallwareMac */,
 				DB4956AB203C0FBB00B81122 /* FrallwareTests */,
+				DBF8393F206E7CF400EB2237 /* FrallwareExample */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +406,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBF8393E206E7CF400EB2237 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF8394D206E7CF400EB2237 /* LaunchScreen.storyboard in Resources */,
+				DBF8394A206E7CF400EB2237 /* Assets.xcassets in Resources */,
+				DBF83948206E7CF400EB2237 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +465,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBF8393C206E7CF400EB2237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBF83945206E7CF400EB2237 /* ViewController.swift in Sources */,
+				DBF83943206E7CF400EB2237 /* AppDelegate.swift in Sources */,
+				DBF8395A206E839100EB2237 /* FoxFinder.swift in Sources */,
+				DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -383,6 +485,25 @@
 			targetProxy = DB4956B2203C0FBC00B81122 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBF83946206E7CF400EB2237 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBF83947206E7CF400EB2237 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DBF8394B206E7CF400EB2237 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBF8394C206E7CF400EB2237 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB495659203C0C6D00B81122 /* Debug */ = {
@@ -583,6 +704,37 @@
 			};
 			name = Release;
 		};
+		DBF8394F206E7CF400EB2237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FrallwareExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DBF83950206E7CF400EB2237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = FrallwareExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -618,6 +770,15 @@
 			buildConfigurations = (
 				DB4956B5203C0FBC00B81122 /* Debug */,
 				DB4956B6203C0FBC00B81122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBF83951206E7CF400EB2237 /* Build configuration list for PBXNativeTarget "FrallwareExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBF8394F206E7CF400EB2237 /* Debug */,
+				DBF83950206E7CF400EB2237 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

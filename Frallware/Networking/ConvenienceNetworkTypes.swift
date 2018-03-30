@@ -16,7 +16,7 @@ public protocol RelativeNetworkCall: NetworkCall {
 
 }
 
-extension RelativeNetworkCall {
+public extension RelativeNetworkCall {
 
     var url: URL {
         guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {

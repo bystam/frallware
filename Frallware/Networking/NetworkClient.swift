@@ -37,11 +37,13 @@ public class NetworkTask<C: NetworkCall> {
     }
 
 
+    @discardableResult
     public func start() -> NetworkTask<C> {
         task?.resume()
         return self
     }
 
+    @discardableResult
     public func cancel() -> NetworkTask<C> {
         task?.cancel()
         return self
@@ -83,7 +85,7 @@ public class NetworkClient {
 
     private let session: URLSession
 
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
 

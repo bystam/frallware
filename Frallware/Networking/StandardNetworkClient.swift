@@ -35,7 +35,7 @@ public class StandardNetworkClient: NetworkClient {
         }
 
         request.setValue(call.bodyMimeType, forHTTPHeaderField: "Content-Type")
-        request.httpBody = call.bodyData
+        request.httpBody = call.encode(body: call.body)
 
         return request
     }

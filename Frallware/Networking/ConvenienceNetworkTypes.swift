@@ -36,13 +36,47 @@ public extension RelativeNetworkCall {
 }
 
 
+// MARK: - Void request
+
+public protocol VoidRequestNetworkCall: NetworkCall where RequestBody == Void {
+}
+
+public extension VoidRequestNetworkCall {
+
+    var body: Void {
+        return ()
+    }
+
+    var bodyMimeType: String? {
+        return nil
+    }
+
+    func encode(body: RequestBody) -> Data? {
+        return nil
+    }
+}
+
+// MARK: - Void request
+
+public protocol DataRequestNetworkCall: NetworkCall where RequestBody == Data {
+}
+
+public extension DataRequestNetworkCall {
+
+    var bodyMimeType: String? {
+        return "application/octet-stream"
+    }
+
+    func encode(body: Data) -> Data? {
+        return body
+    }
+}
+
+
 // MARK: - JSON request
 
-public protocol JSONRequestNetworkCall: NetworkCall {
+public protocol JSONRequestNetworkCall: NetworkCall where RequestBody: Encodable {
 
-    associatedtype RequestBody: Encodable
-
-    var body: RequestBody { get }
     var bodyEncoder: JSONEncoder { get }
 }
 
@@ -59,7 +93,7 @@ public extension JSONRequestNetworkCall {
         return "application/json"
     }
 
-    var bodyData: Data? {
+    public func encode(body: RequestBody) -> Data? {
         return try? bodyEncoder.encode(body)
     }
 }

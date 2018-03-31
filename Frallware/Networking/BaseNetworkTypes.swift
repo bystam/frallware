@@ -16,27 +16,24 @@ public enum HTTPMethod: String {
     case connect = "CONNECT"
 }
 
-public protocol NetworkErrorMiddleware {
-
-    func decodeError(from data: Data) -> Error?
-
-}
 
 public protocol NetworkCall {
 
     var method: HTTPMethod { get }
     var url: URL { get }
-
     var httpHeaders: [String : String] { get }
 
-    var bodyMimeType: String? { get }
-    var bodyData: Data? { get }
 
-    var errorMiddleware: NetworkErrorMiddleware? { get }
+    associatedtype RequestBody
+
+    var bodyMimeType: String? { get }
+    var body: RequestBody { get }
+    func encode(body: RequestBody) -> Data?
 
 
     associatedtype ResponseBody
 
+    func decodeError(from data: Data) -> Error?
     func decodeResponse(from data: Data) throws -> ResponseBody
 }
 
@@ -46,15 +43,7 @@ public extension NetworkCall {
         return [:]
     }
 
-    var bodyMimeType: String? {
-        return nil
-    }
-
-    var bodyData: Data? {
-        return nil
-    }
-
-    var errorMiddleware: NetworkErrorMiddleware? {
+    func decodeError(from data: Data) -> Error? {
         return nil
     }
 }

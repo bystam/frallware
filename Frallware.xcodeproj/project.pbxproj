@@ -41,6 +41,9 @@
 		DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB495652203C0C6D00B81122 /* libFrallware.a */; };
 		DBF8395A206E839100EB2237 /* FoxFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83959206E839100EB2237 /* FoxFinder.swift */; };
 		DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8395B206E841F00EB2237 /* ImageFetcher.swift */; };
+		DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
+		DBFD1CEC20703A4F004B4AB2 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
+		DBFD1CED20703A4F004B4AB2 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B5206FD547002A2F44 /* NetworkErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -461,10 +464,13 @@
 				DB495696203C0F8000B81122 /* Computation.swift in Sources */,
 				DB237BE4206D184100665ACD /* ConvenienceNetworkTypes.swift in Sources */,
 				DB495697203C0F8000B81122 /* Property.swift in Sources */,
+				DBFD1CED20703A4F004B4AB2 /* NetworkErrors.swift in Sources */,
 				DB01D1E3206E749E0078925E /* BaseNetworkTypes.swift in Sources */,
+				DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */,
 				DB495695203C0F8000B81122 /* Binding.swift in Sources */,
 				DB495698203C0F8000B81122 /* Variable.swift in Sources */,
 				DB237BE3206D183500665ACD /* NetworkClient.swift in Sources */,
+				DBFD1CEC20703A4F004B4AB2 /* FakeNetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

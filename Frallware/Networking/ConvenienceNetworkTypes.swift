@@ -44,17 +44,6 @@ public protocol TypedResponseCall {
     func decodeResponse(from data: Data) throws -> ResponseBody
 }
 
-public extension NetworkTask where C: TypedResponseCall {
-
-    func onResponse(_ handler: @escaping (C.ResponseBody) -> Void) -> NetworkTask<C> {
-        let call = self.call
-        return self.onData { data in
-            let typed = try call.decodeResponse(from: data)
-            handler(typed)
-        }
-    }
-}
-
 
 // MARK: - JSON request
 

@@ -4,114 +4,117 @@
 
 import Foundation
 
-private struct MissingBodyError: Error {
 
-    let url: URL?
+public protocol NetworkRunnable {
 
-    var localizedDescription: String {
-        guard let url = url else {
-            return "Response body was empty"
-        }
-        return "Response body was empty for URL: \(url)"
-    }
+    func start()
+    func cancel()
+
+}
+
+public protocol NetworkClient {
+
+    func send<C: NetworkCall & TypedResponseCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable
+    func send<C: NetworkCall>(_ call: C, callback: @escaping (Data?, Error?) -> Void) -> NetworkRunnable
+
 }
 
 
-public class NetworkTask<C: NetworkCall> {
+public class NetworkTask<T> {
 
-    public let call: C
+    var runnable: NetworkRunnable?
 
-    fileprivate var task: URLSessionTask?
-    private var successHandler: ((Data?) throws -> Void)?
+    private var successHandler: ((T) -> Void)?
     private var errorHandler: ((Error) -> Void)?
 
-    fileprivate init(call: C) {
-        self.call = call
+
+    // Internal
+
+    func finish(with result: T) {
+        successHandler?(result)
     }
 
-    fileprivate func consume(data: Data?) {
-        if let error = data.flatMap({ call.errorMiddleware?.decodeError(from: $0) }) {
-            errorHandler?(error)
-            return
-        }
-
-        do {
-            try successHandler?(data)
-        } catch let error {
-            errorHandler?(error)
-        }
-    }
-
-    fileprivate func consume(error: Error) {
+    func fail(with error: Error) {
         errorHandler?(error)
     }
 
 
-    @discardableResult
-    public func start() -> NetworkTask<C> {
-        task?.resume()
-        return self
-    }
+    // Public
 
     @discardableResult
-    public func cancel() -> NetworkTask<C> {
-        task?.cancel()
+    public func start() -> NetworkTask<T> {
+        runnable?.start()
         return self
     }
 
-    public func onComplete(_ handler: @escaping () -> Void) -> NetworkTask<C> {
-        self.successHandler = { _ in
-            handler()
-        }
+    @discardableResult
+    public func cancel() -> NetworkTask<T> {
+        runnable?.cancel()
         return self
     }
 
-    public func onData(_ handler: @escaping (Data) throws -> Void) -> NetworkTask<C> {
-        self.successHandler = { [weak self] (data: Data?) in
-            guard let data = data, !data.isEmpty else {
-                throw MissingBodyError(url: self?.task?.currentRequest?.url)
-            }
-            try handler(data)
-        }
+    public func onResponse(_ handler: @escaping (T) -> Void) -> NetworkTask<T> {
+        successHandler = handler
         return self
     }
 
-    public func onError(_ handler: @escaping (Error) -> Void) -> NetworkTask<C> {
+    public func onError(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
         self.errorHandler = handler
         return self
     }
 }
 
+public extension NetworkTask where T == Void {
 
-public class NetworkClient {
+    public func onSuccess(_ handler: @escaping () -> Void) -> NetworkTask<T> {
+        return onResponse { _ in handler() }
+    }
+}
 
-    private let session: URLSession
 
-    public init(session: URLSession = .shared) {
-        self.session = session
+public extension NetworkClient {
+
+    func request<C: NetworkCall & TypedResponseCall>(_ call: C) -> NetworkTask<C.ResponseBody> {
+        let networkTask = NetworkTask<C.ResponseBody>()
+
+        networkTask.runnable = send(call) { response, error in
+            if let error = error {
+                networkTask.fail(with: error)
+            } else if let response = response {
+                networkTask.finish(with: response)
+            } else {
+                networkTask.fail(with: MissingBodyError(url: call.url))
+            }
+        }
+        return networkTask
     }
 
-    public func request<C: NetworkCall>(_ call: C) -> NetworkTask<C> {
-        var request = URLRequest(url: call.url,
-                                 cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
-                                 timeoutInterval: 20.0)
+    func request<C: NetworkCall>(_ call: C) -> NetworkTask<Data> {
+        let networkTask = NetworkTask<Data>()
 
-        request.httpMethod = call.method.rawValue
-        call.httpHeaders.forEach { field, value in
-            request.addValue(value, forHTTPHeaderField: field)
-        }
-
-        request.setValue(call.bodyMimeType, forHTTPHeaderField: "Content-Type")
-        request.httpBody = call.bodyData
-
-        let networkTask = NetworkTask<C>(call: call)
-        networkTask.task = session.dataTask(with: request) { data, response, error in
+        networkTask.runnable = send(call) { data, error in
             if let error = error {
-                networkTask.consume(error: error)
+                networkTask.fail(with: error)
+            } else if let data = data {
+                networkTask.finish(with: data)
             } else {
-                networkTask.consume(data: data)
+                networkTask.fail(with: MissingBodyError(url: call.url))
+            }
+        }
+        return networkTask
+    }
+
+    func voidRequest<C: NetworkCall>(_ call: C) -> NetworkTask<Void> {
+        let networkTask = NetworkTask<Void>()
+
+        networkTask.runnable = send(call) { data, error in
+            if let error = error {
+                networkTask.fail(with: error)
+            } else {
+                networkTask.finish(with: ())
             }
         }
         return networkTask
     }
 }
+

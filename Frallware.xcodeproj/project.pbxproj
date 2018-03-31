@@ -11,6 +11,9 @@
 		DB01D1E3206E749E0078925E /* BaseNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */; };
 		DB01D1E6206E76C10078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
 		DB01D1E7206E76D80078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
+		DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
+		DB0728B6206FD547002A2F44 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B5206FD547002A2F44 /* NetworkErrors.swift */; };
+		DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
 		DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */; };
 		DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
 		DB237BE3206D183500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
@@ -65,6 +68,9 @@
 /* Begin PBXFileReference section */
 		DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkTypes.swift; sourceTree = "<group>"; };
 		DB01D1E5206E76C10078925E /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkClient.swift; sourceTree = "<group>"; };
+		DB0728B5206FD547002A2F44 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNetworkClient.swift; sourceTree = "<group>"; };
 		DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceNetworkTypes.swift; sourceTree = "<group>"; };
 		DB237BE1206D17E500665ACD /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		DB495652203C0C6D00B81122 /* libFrallware.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrallware.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +150,11 @@
 			isa = PBXGroup;
 			children = (
 				DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */,
-				DB237BE1206D17E500665ACD /* NetworkClient.swift */,
 				DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */,
+				DB237BE1206D17E500665ACD /* NetworkClient.swift */,
+				DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */,
+				DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */,
+				DB0728B5206FD547002A2F44 /* NetworkErrors.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -426,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */,
 				DB495675203C0EE000B81122 /* Property.swift in Sources */,
 				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
 				DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */,
@@ -434,8 +444,10 @@
 				DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */,
 				DB01D1E2206E73760078925E /* BaseNetworkTypes.swift in Sources */,
 				DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */,
+				DB0728B6206FD547002A2F44 /* NetworkErrors.swift in Sources */,
 				DB495676203C0EE000B81122 /* Variable.swift in Sources */,
 				DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */,
+				DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */,
 				DB01D1E6206E76C10078925E /* Result.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

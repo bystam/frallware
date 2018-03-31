@@ -38,10 +38,11 @@ public extension RelativeNetworkCall {
 
 // MARK: - Void request
 
-public protocol VoidRequestNetworkCall: NetworkCall where RequestBody == Void {
-}
+public protocol VoidRequestBodied {}
 
-public extension VoidRequestNetworkCall {
+public extension VoidRequestBodied where Self: NetworkCall {
+
+    typealias RequestBody = Void
 
     var body: Void {
         return ()
@@ -58,10 +59,11 @@ public extension VoidRequestNetworkCall {
 
 // MARK: - Void request
 
-public protocol DataRequestNetworkCall: NetworkCall where RequestBody == Data {
-}
+public protocol DataRequestBodied {}
 
-public extension DataRequestNetworkCall {
+public extension DataRequestBodied where Self: NetworkCall {
+
+    typealias RequestBody = Data
 
     var bodyMimeType: String? {
         return "application/octet-stream"
@@ -75,19 +77,19 @@ public extension DataRequestNetworkCall {
 
 // MARK: - JSON request
 
-public protocol JSONRequestNetworkCall: NetworkCall where RequestBody: Encodable {
+public protocol JSONRequestBodied {
 
     var bodyEncoder: JSONEncoder { get }
 }
 
-public extension JSONRequestNetworkCall {
+public extension JSONRequestBodied {
 
     var bodyEncoder: JSONEncoder {
         return JSONEncoder()
     }
 }
 
-public extension JSONRequestNetworkCall {
+public extension JSONRequestBodied where Self: NetworkCall, Self.RequestBody: Encodable {
 
     var bodyMimeType: String? {
         return "application/json"
@@ -101,10 +103,12 @@ public extension JSONRequestNetworkCall {
 
 // MARK: - Void response
 
-public protocol VoidResponseNetworkCall: NetworkCall where ResponseBody == Void {
-}
+public protocol VoidResponseBodied {}
 
-public extension DataResponseNetworkCall {
+public extension VoidResponseBodied where Self: NetworkCall {
+
+    typealias ResponseBody = Void
+
     func decodeResponse(from data: Data) throws -> Void {
         return ()
     }
@@ -113,10 +117,12 @@ public extension DataResponseNetworkCall {
 
 // MARK: - Data response
 
-public protocol DataResponseNetworkCall: NetworkCall where ResponseBody == Data {
-}
+public protocol DataResponseBodied {}
 
-public extension DataResponseNetworkCall {
+public extension DataResponseBodied where Self: NetworkCall {
+
+    typealias ResponseBody = Data
+
     func decodeResponse(from data: Data) throws -> Data {
         return data
     }
@@ -125,15 +131,19 @@ public extension DataResponseNetworkCall {
 
 // MARK: - JSON response
 
-public protocol JSONResponseNetworkCall: NetworkCall where ResponseBody: Decodable {
+public protocol JSONResponseBodied {
+
     var bodyDecoder: JSONDecoder { get }
 }
 
-public extension JSONResponseNetworkCall {
+public extension JSONResponseBodied {
 
     var bodyDecoder: JSONDecoder {
         return JSONDecoder()
     }
+}
+
+public extension JSONResponseBodied where Self: NetworkCall, Self.ResponseBody: Decodable {
 
     func decodeResponse(from data: Data) throws -> ResponseBody {
         return try bodyDecoder.decode(ResponseBody.self, from: data)

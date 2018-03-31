@@ -5,7 +5,7 @@
 import UIKit
 import Frallware
 
-struct FetchImageCall: VoidRequestNetworkCall {
+struct FetchImageCall: NetworkCall, VoidRequestBodied {
 
     let method: HTTPMethod = .get
     let url: URL

@@ -12,7 +12,7 @@ public class StandardNetworkClient: NetworkClient {
         self.session = session
     }
 
-    public func send<C: NetworkCall & TypedResponseCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C: TypedResponseNetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
         return self.send(call) { (data: Data?, error: Error?) in
             do {
                 let data = data ?? Data()

@@ -14,7 +14,7 @@ public protocol NetworkRunnable {
 
 public protocol NetworkClient {
 
-    func send<C: NetworkCall & TypedResponseCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable
+    func send<C: TypedResponseNetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable
     func send<C: NetworkCall>(_ call: C, callback: @escaping (Data?, Error?) -> Void) -> NetworkRunnable
 
 }
@@ -74,10 +74,10 @@ public extension NetworkTask where T == Void {
 
 public extension NetworkClient {
 
-    func request<C: NetworkCall & TypedResponseCall>(_ call: C) -> NetworkTask<C.ResponseBody> {
+    func request<C: TypedResponseNetworkCall>(_ call: C) -> NetworkTask<C.ResponseBody> {
         let networkTask = NetworkTask<C.ResponseBody>()
 
-        networkTask.runnable = send(call) { response, error in
+        networkTask.runnable = send(call) { (response: C.ResponseBody?, error: Error?) in
             if let error = error {
                 networkTask.fail(with: error)
             } else if let response = response {

@@ -11,7 +11,7 @@ public class FakeNetworkClient: NetworkClient {
 
     public init() {}
 
-    public func send<C: NetworkCall & TypedResponseCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C: TypedResponseNetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
         return FakeNetworkRunnable(starter: {
             if let error = self.fakeErrorByType[String(describing: C.self)] {
                 callback(nil, error)
@@ -36,7 +36,7 @@ public class FakeNetworkClient: NetworkClient {
         fakeResponseByType[String(describing: type)] = data
     }
 
-    public func onCall<C: NetworkCall & TypedResponseCall>(ofType type: C.Type, respondWith response: C.ResponseBody) {
+    public func onCall<C: TypedResponseNetworkCall>(ofType type: C.Type, respondWith response: C.ResponseBody) {
         fakeResponseByType[String(describing: type)] = response
     }
 

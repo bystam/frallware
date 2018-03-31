@@ -15,7 +15,7 @@ public protocol NetworkRunnable {
 public protocol NetworkClient {
 
     func send<C: TypedResponseNetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable
-    func send<C: NetworkCall>(_ call: C, callback: @escaping (Data?, Error?) -> Void) -> NetworkRunnable
+    func send<C: NetworkCall>(_ call: C, callback: @escaping (Error?) -> Void) -> NetworkRunnable
 
 }
 
@@ -77,7 +77,7 @@ public extension NetworkClient {
     func request<C: TypedResponseNetworkCall>(_ call: C) -> NetworkTask<C.ResponseBody> {
         let networkTask = NetworkTask<C.ResponseBody>()
 
-        networkTask.runnable = send(call) { (response: C.ResponseBody?, error: Error?) in
+        networkTask.runnable = send(call) { response, error in
             if let error = error {
                 networkTask.fail(with: error)
             } else if let response = response {
@@ -89,25 +89,10 @@ public extension NetworkClient {
         return networkTask
     }
 
-    func request<C: NetworkCall>(_ call: C) -> NetworkTask<Data> {
-        let networkTask = NetworkTask<Data>()
-
-        networkTask.runnable = send(call) { data, error in
-            if let error = error {
-                networkTask.fail(with: error)
-            } else if let data = data {
-                networkTask.finish(with: data)
-            } else {
-                networkTask.fail(with: MissingBodyError(url: call.url))
-            }
-        }
-        return networkTask
-    }
-
-    func voidRequest<C: NetworkCall>(_ call: C) -> NetworkTask<Void> {
+    func request<C: NetworkCall>(_ call: C) -> NetworkTask<Void> {
         let networkTask = NetworkTask<Void>()
 
-        networkTask.runnable = send(call) { data, error in
+        networkTask.runnable = send(call) { error in
             if let error = error {
                 networkTask.fail(with: error)
             } else {

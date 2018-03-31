@@ -36,18 +36,9 @@ public extension RelativeNetworkCall {
 }
 
 
-// MARK: - Typed Response
-
-public protocol TypedResponseNetworkCall: NetworkCall {
-    associatedtype ResponseBody
-
-    func decodeResponse(from data: Data) throws -> ResponseBody
-}
-
-
 // MARK: - JSON request
 
-public protocol JSONRequestCall: NetworkCall {
+public protocol JSONRequestNetworkCall: NetworkCall {
 
     associatedtype RequestBody: Encodable
 
@@ -55,14 +46,14 @@ public protocol JSONRequestCall: NetworkCall {
     var bodyEncoder: JSONEncoder { get }
 }
 
-public extension JSONRequestCall {
+public extension JSONRequestNetworkCall {
 
     var bodyEncoder: JSONEncoder {
         return JSONEncoder()
     }
 }
 
-public extension JSONRequestCall {
+public extension JSONRequestNetworkCall {
 
     var bodyMimeType: String? {
         return "application/json"
@@ -74,13 +65,35 @@ public extension JSONRequestCall {
 }
 
 
+// MARK: - Typed Response
+
+public protocol TypedResponseNetworkCall: NetworkCall {
+    associatedtype ResponseBody
+
+    func decodeResponse(from data: Data) throws -> ResponseBody
+}
+
+
+// MARK: - Data response
+
+public protocol DataResponseNetworkCall: NetworkCall {
+    typealias ResponseBody = Data
+}
+
+public extension DataResponseNetworkCall {
+    func decodeResponse(from data: Data) throws -> Data {
+        return data
+    }
+}
+
+
 // MARK: - JSON response
 
-public protocol JSONResponseCall: TypedResponseNetworkCall where ResponseBody: Decodable {
+public protocol JSONResponseNetworkCall: TypedResponseNetworkCall where ResponseBody: Decodable {
     var bodyDecoder: JSONDecoder { get }
 }
 
-public extension JSONResponseCall {
+public extension JSONResponseNetworkCall {
 
     var bodyDecoder: JSONDecoder {
         return JSONDecoder()

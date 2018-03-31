@@ -14,7 +14,7 @@ extension FoxFinderCall {
 }
 
 
-struct RandomFoxCall: FoxFinderCall, JSONResponseCall {
+struct RandomFoxCall: FoxFinderCall, JSONResponseNetworkCall {
 
     struct ResponseBody: Decodable {
         let image: URL

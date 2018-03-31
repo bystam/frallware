@@ -21,19 +21,14 @@ public class FakeNetworkClient: NetworkClient {
         })
     }
 
-    public func send<C: NetworkCall>(_ call: C, callback: @escaping (Data?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C: NetworkCall>(_ call: C, callback: @escaping (Error?) -> Void) -> NetworkRunnable {
         return FakeNetworkRunnable(starter: {
             if let error = self.fakeErrorByType[String(describing: C.self)] {
-                callback(nil, error)
-            } else if let data = self.fakeResponseByType[String(describing: C.self)] as? Data {
-                callback(data, nil)
+                callback(error)
+            } else {
+                callback(nil)
             }
         })
-    }
-
-
-    public func onCall<C: NetworkCall>(ofType type: C.Type, respondWith data: Data) {
-        fakeResponseByType[String(describing: type)] = data
     }
 
     public func onCall<C: TypedResponseNetworkCall>(ofType type: C.Type, respondWith response: C.ResponseBody) {

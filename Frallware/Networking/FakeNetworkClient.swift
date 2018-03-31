@@ -9,6 +9,8 @@ public class FakeNetworkClient: NetworkClient {
     private var fakeResponseByType: [String : Any] = [:]
     private var fakeErrorByType: [String : Error] = [:]
 
+    public init() {}
+
     public func send<C: NetworkCall & TypedResponseCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
         return FakeNetworkRunnable(starter: {
             if let error = self.fakeErrorByType[String(describing: C.self)] {

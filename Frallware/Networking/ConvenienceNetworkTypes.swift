@@ -65,19 +65,21 @@ public extension JSONRequestNetworkCall {
 }
 
 
-// MARK: - Typed Response
+// MARK: - Void response
 
-public protocol TypedResponseNetworkCall: NetworkCall {
-    associatedtype ResponseBody
+public protocol VoidResponseNetworkCall: NetworkCall where ResponseBody == Void {
+}
 
-    func decodeResponse(from data: Data) throws -> ResponseBody
+public extension DataResponseNetworkCall {
+    func decodeResponse(from data: Data) throws -> Void {
+        return ()
+    }
 }
 
 
 // MARK: - Data response
 
-public protocol DataResponseNetworkCall: NetworkCall {
-    typealias ResponseBody = Data
+public protocol DataResponseNetworkCall: NetworkCall where ResponseBody == Data {
 }
 
 public extension DataResponseNetworkCall {
@@ -89,7 +91,7 @@ public extension DataResponseNetworkCall {
 
 // MARK: - JSON response
 
-public protocol JSONResponseNetworkCall: TypedResponseNetworkCall where ResponseBody: Decodable {
+public protocol JSONResponseNetworkCall: NetworkCall where ResponseBody: Decodable {
     var bodyDecoder: JSONDecoder { get }
 }
 

@@ -33,6 +33,11 @@ public protocol NetworkCall {
     var bodyData: Data? { get }
 
     var errorMiddleware: NetworkErrorMiddleware? { get }
+
+
+    associatedtype ResponseBody
+
+    func decodeResponse(from data: Data) throws -> ResponseBody
 }
 
 public extension NetworkCall {

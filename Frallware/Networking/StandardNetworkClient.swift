@@ -12,7 +12,7 @@ public class StandardNetworkClient: NetworkClient {
         self.session = session
     }
 
-    public func send<C: TypedResponseNetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C: NetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
         return session.dataTask(with: request(from: call)) { data, response, error in
             do {
                 let data = data ?? Data()
@@ -20,18 +20,6 @@ public class StandardNetworkClient: NetworkClient {
                 callback(response, nil)
             } catch let error {
                 callback(nil, error)
-            }
-        }
-    }
-
-    public func send<C: NetworkCall>(_ call: C, callback: @escaping (Error?) -> Void) -> NetworkRunnable {
-        return session.dataTask(with: request(from: call)) { data, response, error in
-            if let error = error {
-                callback(error)
-            } else if let error = data.flatMap({ call.errorMiddleware?.decodeError(from: $0) }) {
-                callback(error)
-            } else {
-                callback(nil)
             }
         }
     }

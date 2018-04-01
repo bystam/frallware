@@ -20,7 +20,7 @@ public extension VoidRequestBodied where Self: NetworkCall {
         return nil
     }
 
-    func encode(body: RequestBody) -> Data? {
+    func encode(body: Void) -> Data? {
         return nil
     }
 }

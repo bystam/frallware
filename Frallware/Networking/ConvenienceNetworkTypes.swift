@@ -4,38 +4,6 @@
 
 import Foundation
 
-// MARK: - Relative Network Call
-
-public protocol RelativeNetworkCall: NetworkCall {
-
-    var baseURL: URL { get }
-
-    var path: String { get }
-    var queryParameters: [String : String] { get }
-
-}
-
-public extension RelativeNetworkCall {
-
-    var url: URL {
-        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
-            return baseURL
-        }
-        components.path += path
-        if !queryParameters.isEmpty {
-            components.queryItems = queryParameters.map { key, value -> URLQueryItem in
-                return URLQueryItem(name: key, value: value)
-            }
-        }
-        return components.url ?? baseURL
-    }
-
-    var queryParameters: [String : String] {
-        return [:]
-    }
-}
-
-
 // MARK: - Void request
 
 public protocol VoidRequestBodied {}

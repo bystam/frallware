@@ -5,22 +5,13 @@
 import Foundation
 import Frallware
 
-protocol FoxFinderCall: RelativeNetworkCall {}
-
-extension FoxFinderCall {
-    var baseURL: URL {
-        return URL(string: "https://randomfox.ca")!
-    }
-}
-
-
-struct RandomFoxCall: FoxFinderCall, VoidRequestBodied, JSONResponseBodied {
+struct RandomFoxCall: NetworkCall, VoidRequestBodied, JSONResponseBodied {
 
     struct ResponseBody: Decodable {
         let image: URL
         let link: URL
     }
 
-    let path: String = "/floof"
+    let url: URL = URL(string: "https://randomfox.ca/floof")!
     let method: HTTPMethod = .get
 }

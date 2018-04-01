@@ -8,29 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		DB01D1E2206E73760078925E /* BaseNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */; };
-		DB01D1E3206E749E0078925E /* BaseNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */; };
 		DB01D1E6206E76C10078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
-		DB01D1E7206E76D80078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
 		DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
 		DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
 		DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */; };
 		DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
-		DB237BE3206D183500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
-		DB237BE4206D184100665ACD /* ConvenienceNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */; };
-		DB495673203C0EE000B81122 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49566F203C0EE000B81122 /* Computation.swift */; };
-		DB495674203C0EE000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
-		DB495675203C0EE000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
-		DB495676203C0EE000B81122 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495672203C0EE000B81122 /* Variable.swift */; };
-		DB495695203C0F8000B81122 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495670203C0EE000B81122 /* Binding.swift */; };
-		DB495696203C0F8000B81122 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB49566F203C0EE000B81122 /* Computation.swift */; };
-		DB495697203C0F8000B81122 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495671203C0EE000B81122 /* Property.swift */; };
-		DB495698203C0F8000B81122 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495672203C0EE000B81122 /* Variable.swift */; };
-		DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */; };
-		DB4956B7203C0FC600B81122 /* ComputationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495678203C0EEE00B81122 /* ComputationTests.swift */; };
-		DB4956B8203C0FC600B81122 /* VariableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB495677203C0EEE00B81122 /* VariableTests.swift */; };
 		DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BE203C10F300B81122 /* UIKit+Extra.swift */; };
 		DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
-		DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 		DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */; };
 		DBF83943206E7CF400EB2237 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83942206E7CF400EB2237 /* AppDelegate.swift */; };
 		DBF83945206E7CF400EB2237 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83944206E7CF400EB2237 /* ViewController.swift */; };
@@ -40,19 +24,7 @@
 		DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB495652203C0C6D00B81122 /* libFrallware.a */; };
 		DBF8395A206E839100EB2237 /* FoxFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83959206E839100EB2237 /* FoxFinder.swift */; };
 		DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8395B206E841F00EB2237 /* ImageFetcher.swift */; };
-		DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
-		DBFD1CEC20703A4F004B4AB2 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DB4956B2203C0FBC00B81122 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB49564A203C0C6D00B81122 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB49568B203C0F7A00B81122;
-			remoteInfo = FrallwareMac;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DB495650203C0C6D00B81122 /* CopyFiles */ = {
@@ -74,15 +46,6 @@
 		DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceNetworkTypes.swift; sourceTree = "<group>"; };
 		DB237BE1206D17E500665ACD /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		DB495652203C0C6D00B81122 /* libFrallware.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrallware.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB49566F203C0EE000B81122 /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
-		DB495670203C0EE000B81122 /* Binding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
-		DB495671203C0EE000B81122 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		DB495672203C0EE000B81122 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
-		DB495677203C0EEE00B81122 /* VariableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableTests.swift; sourceTree = "<group>"; };
-		DB495678203C0EEE00B81122 /* ComputationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputationTests.swift; sourceTree = "<group>"; };
-		DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libFrallwareMac.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrallwareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB4956B0203C0FBC00B81122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB4956BE203C10F300B81122 /* UIKit+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extra.swift"; sourceTree = "<group>"; };
 		DB4956C2203C11EE00B81122 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderTypes.swift; sourceTree = "<group>"; };
@@ -105,21 +68,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB495689203C0F7A00B81122 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB4956A9203C0FBB00B81122 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB4956B1203C0FBC00B81122 /* libFrallwareMac.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DBF8393D206E7CF400EB2237 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,13 +79,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DB01D1DF206D31150078925E /* NetworkingTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetworkingTests;
-			sourceTree = "<group>";
-		};
 		DB01D1E4206E76B80078925E /* Fralldation */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				DB495654203C0C6D00B81122 /* Frallware */,
-				DB49568D203C0F7A00B81122 /* FrallwareMac */,
-				DB4956AD203C0FBB00B81122 /* FrallwareTests */,
 				DBF83941206E7CF400EB2237 /* FrallwareExample */,
 				DB495653203C0C6D00B81122 /* Products */,
 				DBF83957206E7D8B00EB2237 /* Frameworks */,
@@ -174,8 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				DB495652203C0C6D00B81122 /* libFrallware.a */,
-				DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */,
-				DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */,
 				DBF83940206E7CF400EB2237 /* FrallwareExample.app */,
 			);
 			name = Products;
@@ -185,49 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				DB01D1E4206E76B80078925E /* Fralldation */,
-				DB49565E203C0EB400B81122 /* Bindings */,
 				DB237BDE206D17C400665ACD /* Networking */,
 				DB4956BD203C10E300B81122 /* iOS+Extra */,
 				DB4956C1203C11E100B81122 /* ServiceLocator */,
 			);
 			path = Frallware;
-			sourceTree = "<group>";
-		};
-		DB49565E203C0EB400B81122 /* Bindings */ = {
-			isa = PBXGroup;
-			children = (
-				DB495670203C0EE000B81122 /* Binding.swift */,
-				DB49566F203C0EE000B81122 /* Computation.swift */,
-				DB495671203C0EE000B81122 /* Property.swift */,
-				DB495672203C0EE000B81122 /* Variable.swift */,
-			);
-			path = Bindings;
-			sourceTree = "<group>";
-		};
-		DB49567B203C0EF400B81122 /* BindingsTests */ = {
-			isa = PBXGroup;
-			children = (
-				DB495678203C0EEE00B81122 /* ComputationTests.swift */,
-				DB495677203C0EEE00B81122 /* VariableTests.swift */,
-			);
-			path = BindingsTests;
-			sourceTree = "<group>";
-		};
-		DB49568D203C0F7A00B81122 /* FrallwareMac */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FrallwareMac;
-			sourceTree = "<group>";
-		};
-		DB4956AD203C0FBB00B81122 /* FrallwareTests */ = {
-			isa = PBXGroup;
-			children = (
-				DB49567B203C0EF400B81122 /* BindingsTests */,
-				DB01D1DF206D31150078925E /* NetworkingTests */,
-				DB4956B0203C0FBC00B81122 /* Info.plist */,
-			);
-			path = FrallwareTests;
 			sourceTree = "<group>";
 		};
 		DB4956BD203C10E300B81122 /* iOS+Extra */ = {
@@ -279,16 +178,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		DB49568A203C0F7A00B81122 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		DB495651203C0C6D00B81122 /* Frallware */ = {
 			isa = PBXNativeTarget;
@@ -306,41 +195,6 @@
 			productName = Frallware;
 			productReference = DB495652203C0C6D00B81122 /* libFrallware.a */;
 			productType = "com.apple.product-type.library.static";
-		};
-		DB49568B203C0F7A00B81122 /* FrallwareMac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB495692203C0F7A00B81122 /* Build configuration list for PBXNativeTarget "FrallwareMac" */;
-			buildPhases = (
-				DB495688203C0F7A00B81122 /* Sources */,
-				DB495689203C0F7A00B81122 /* Frameworks */,
-				DB49568A203C0F7A00B81122 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FrallwareMac;
-			productName = FrallwareMac;
-			productReference = DB49568C203C0F7A00B81122 /* libFrallwareMac.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		DB4956AB203C0FBB00B81122 /* FrallwareTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB4956B4203C0FBC00B81122 /* Build configuration list for PBXNativeTarget "FrallwareTests" */;
-			buildPhases = (
-				DB4956A8203C0FBB00B81122 /* Sources */,
-				DB4956A9203C0FBB00B81122 /* Frameworks */,
-				DB4956AA203C0FBB00B81122 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DB4956B3203C0FBC00B81122 /* PBXTargetDependency */,
-			);
-			name = FrallwareTests;
-			productName = FrallwareTests;
-			productReference = DB4956AC203C0FBB00B81122 /* FrallwareTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DBF8393F206E7CF400EB2237 /* FrallwareExample */ = {
 			isa = PBXNativeTarget;
@@ -374,14 +228,6 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
-					DB49568B203C0F7A00B81122 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
-					DB4956AB203C0FBB00B81122 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
 					DBF8393F206E7CF400EB2237 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -402,21 +248,12 @@
 			projectRoot = "";
 			targets = (
 				DB495651203C0C6D00B81122 /* Frallware */,
-				DB49568B203C0F7A00B81122 /* FrallwareMac */,
-				DB4956AB203C0FBB00B81122 /* FrallwareTests */,
 				DBF8393F206E7CF400EB2237 /* FrallwareExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DB4956AA203C0FBB00B81122 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DBF8393E206E7CF400EB2237 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,45 +272,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */,
-				DB495675203C0EE000B81122 /* Property.swift in Sources */,
 				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
 				DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */,
-				DB495673203C0EE000B81122 /* Computation.swift in Sources */,
-				DB495674203C0EE000B81122 /* Binding.swift in Sources */,
 				DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */,
 				DB01D1E2206E73760078925E /* BaseNetworkTypes.swift in Sources */,
 				DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */,
-				DB495676203C0EE000B81122 /* Variable.swift in Sources */,
 				DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */,
 				DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */,
 				DB01D1E6206E76C10078925E /* Result.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB495688203C0F7A00B81122 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB01D1E7206E76D80078925E /* Result.swift in Sources */,
-				DB4956C4203C11EE00B81122 /* ServiceLocator.swift in Sources */,
-				DB495696203C0F8000B81122 /* Computation.swift in Sources */,
-				DB237BE4206D184100665ACD /* ConvenienceNetworkTypes.swift in Sources */,
-				DB495697203C0F8000B81122 /* Property.swift in Sources */,
-				DB01D1E3206E749E0078925E /* BaseNetworkTypes.swift in Sources */,
-				DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */,
-				DB495695203C0F8000B81122 /* Binding.swift in Sources */,
-				DB495698203C0F8000B81122 /* Variable.swift in Sources */,
-				DB237BE3206D183500665ACD /* NetworkClient.swift in Sources */,
-				DBFD1CEC20703A4F004B4AB2 /* FakeNetworkClient.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB4956A8203C0FBB00B81122 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB4956B8203C0FC600B81122 /* VariableTests.swift in Sources */,
-				DB4956B7203C0FC600B81122 /* ComputationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,14 +295,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DB4956B3203C0FBC00B81122 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB49568B203C0F7A00B81122 /* FrallwareMac */;
-			targetProxy = DB4956B2203C0FBC00B81122 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DBF83946206E7CF400EB2237 /* Main.storyboard */ = {
@@ -651,71 +449,6 @@
 			};
 			name = Release;
 		};
-		DB495693203C0F7A00B81122 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		DB495694203C0F7A00B81122 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		DB4956B5203C0FBC00B81122 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FrallwareTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		DB4956B6203C0FBC00B81122 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = FrallwareTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.frallware.FrallwareTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		DBF8394F206E7CF400EB2237 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -764,24 +497,6 @@
 			buildConfigurations = (
 				DB49565C203C0C6D00B81122 /* Debug */,
 				DB49565D203C0C6D00B81122 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB495692203C0F7A00B81122 /* Build configuration list for PBXNativeTarget "FrallwareMac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB495693203C0F7A00B81122 /* Debug */,
-				DB495694203C0F7A00B81122 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB4956B4203C0FBC00B81122 /* Build configuration list for PBXNativeTarget "FrallwareTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB4956B5203C0FBC00B81122 /* Debug */,
-				DB4956B6203C0FBC00B81122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

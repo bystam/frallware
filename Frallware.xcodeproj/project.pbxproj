@@ -12,7 +12,6 @@
 		DB01D1E6206E76C10078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
 		DB01D1E7206E76D80078925E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB01D1E5206E76C10078925E /* Result.swift */; };
 		DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
-		DB0728B6206FD547002A2F44 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B5206FD547002A2F44 /* NetworkErrors.swift */; };
 		DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
 		DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */; };
 		DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
@@ -43,7 +42,6 @@
 		DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8395B206E841F00EB2237 /* ImageFetcher.swift */; };
 		DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
 		DBFD1CEC20703A4F004B4AB2 /* FakeNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */; };
-		DBFD1CED20703A4F004B4AB2 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B5206FD547002A2F44 /* NetworkErrors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +70,6 @@
 		DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkTypes.swift; sourceTree = "<group>"; };
 		DB01D1E5206E76C10078925E /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeNetworkClient.swift; sourceTree = "<group>"; };
-		DB0728B5206FD547002A2F44 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNetworkClient.swift; sourceTree = "<group>"; };
 		DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceNetworkTypes.swift; sourceTree = "<group>"; };
 		DB237BE1206D17E500665ACD /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
@@ -153,11 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				DB01D1E1206E73760078925E /* BaseNetworkTypes.swift */,
-				DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */,
 				DB237BE1206D17E500665ACD /* NetworkClient.swift */,
 				DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */,
 				DB0728B3206FD016002A2F44 /* FakeNetworkClient.swift */,
-				DB0728B5206FD547002A2F44 /* NetworkErrors.swift */,
+				DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -447,7 +443,6 @@
 				DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */,
 				DB01D1E2206E73760078925E /* BaseNetworkTypes.swift in Sources */,
 				DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */,
-				DB0728B6206FD547002A2F44 /* NetworkErrors.swift in Sources */,
 				DB495676203C0EE000B81122 /* Variable.swift in Sources */,
 				DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */,
 				DB0728B4206FD016002A2F44 /* FakeNetworkClient.swift in Sources */,
@@ -464,7 +459,6 @@
 				DB495696203C0F8000B81122 /* Computation.swift in Sources */,
 				DB237BE4206D184100665ACD /* ConvenienceNetworkTypes.swift in Sources */,
 				DB495697203C0F8000B81122 /* Property.swift in Sources */,
-				DBFD1CED20703A4F004B4AB2 /* NetworkErrors.swift in Sources */,
 				DB01D1E3206E749E0078925E /* BaseNetworkTypes.swift in Sources */,
 				DBFD1CEB20703A4F004B4AB2 /* StandardNetworkClient.swift in Sources */,
 				DB495695203C0F8000B81122 /* Binding.swift in Sources */,

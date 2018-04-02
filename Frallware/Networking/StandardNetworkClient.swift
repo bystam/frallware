@@ -6,14 +6,28 @@ import Foundation
 
 public class StandardNetworkClient: NetworkClient {
 
+    public struct Options {
+        public var logURL: Bool = false
+
+        public init() {}
+    }
+
+    private let options: Options
     private let session: URLSession
 
-    public init(session: URLSession = .shared) {
+    public init(options: Options, session: URLSession = .shared) {
+        self.options = options
         self.session = session
     }
 
     public func send<C: NetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
-        return session.dataTask(with: request(from: call)) { data, response, error in
+        let request = self.request(from: call)
+
+        if options.logURL {
+            print("\(request.httpMethod!)\t\t\(request.url!)")
+        }
+
+        return session.dataTask(with: request) { data, response, error in
             do {
                 let data = data ?? Data()
                 let response = try call.decodeResponse(from: data)

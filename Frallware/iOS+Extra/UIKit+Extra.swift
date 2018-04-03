@@ -22,3 +22,17 @@ public extension UITableView {
         return dequeueReusableCell(withIdentifier: type.defaultReuseIdentifier, for: indexPath) as! C
     }
 }
+
+
+public extension NSLayoutConstraint {
+
+    static func fill(_ view: UIView, inside container: UIView, with insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
+        return [
+            view.topAnchor.constraint(equalTo: container.topAnchor, constant: insets.top),
+            view.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -insets.right),
+            view.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -insets.bottom),
+            view.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: insets.left)
+        ]
+    }
+
+}

@@ -13,6 +13,7 @@
 		DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */; };
 		DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */; };
 		DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB237BE1206D17E500665ACD /* NetworkClient.swift */; };
+		DB373F642074093C00B2B0F3 /* CoreGraphics+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB373F632074093C00B2B0F3 /* CoreGraphics+Extra.swift */; };
 		DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956BE203C10F300B81122 /* UIKit+Extra.swift */; };
 		DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4956C2203C11EE00B81122 /* ServiceLocator.swift */; };
 		DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */; };
@@ -45,6 +46,7 @@
 		DB0728B72070243C002A2F44 /* StandardNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardNetworkClient.swift; sourceTree = "<group>"; };
 		DB237BDF206D17DF00665ACD /* ConvenienceNetworkTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceNetworkTypes.swift; sourceTree = "<group>"; };
 		DB237BE1206D17E500665ACD /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		DB373F632074093C00B2B0F3 /* CoreGraphics+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreGraphics+Extra.swift"; sourceTree = "<group>"; };
 		DB495652203C0C6D00B81122 /* libFrallware.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFrallware.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4956BE203C10F300B81122 /* UIKit+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extra.swift"; sourceTree = "<group>"; };
 		DB4956C2203C11EE00B81122 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				DBDF54C2203DAE4100C4B234 /* InterfaceBuilderTypes.swift */,
 				DB4956BE203C10F300B81122 /* UIKit+Extra.swift */,
+				DB373F632074093C00B2B0F3 /* CoreGraphics+Extra.swift */,
 			);
 			path = "iOS+Extra";
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
 				DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */,
 				DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */,
+				DB373F642074093C00B2B0F3 /* CoreGraphics+Extra.swift in Sources */,
 				DB01D1E2206E73760078925E /* BaseNetworkTypes.swift in Sources */,
 				DB237BE2206D17E500665ACD /* NetworkClient.swift in Sources */,
 				DB4956C3203C11EE00B81122 /* ServiceLocator.swift in Sources */,

@@ -58,7 +58,7 @@ public class NetworkTask<T> {
     }
 
     public func onError(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
-        self.errorHandler = handler
+        errorHandler = handler
         return self
     }
 }

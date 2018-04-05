@@ -7,7 +7,7 @@ import Frallware
 
 class ViewController: UIViewController {
 
-    private let client = StandardNetworkClient()
+    private let client = StandardNetworkClient(options: .init())
 
     @IBOutlet weak var imageView: UIImageView!
     

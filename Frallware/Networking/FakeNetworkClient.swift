@@ -14,7 +14,7 @@ public class FakeNetworkClient: NetworkClient {
     public func send<C>(_ call: C, callback: @escaping (Result<NetworkResponse<C.ResponseBody>>) -> Void) -> NetworkRunnable where C : NetworkCall {
         return FakeNetworkRunnable(starter: {
             if let error = self.fakeErrorByType[String(describing: C.self)] {
-                callback(.error(error))
+                callback(.failure(error))
             } else if let response = self.fakeResponseByType[String(describing: C.self)] as? NetworkResponse<C.ResponseBody> {
                 callback(.success(response))
             }

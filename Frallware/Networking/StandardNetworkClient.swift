@@ -33,7 +33,7 @@ public class StandardNetworkClient: NetworkClient {
                 let data = data ?? Data()
 
                 if let error = call.decodeError(from: data) {
-                    callback(.error(error))
+                    callback(.failure(error))
                 } else {
                     let body = try call.decodeBody(from: data)
                     let response = NetworkResponse(httpStatus: statusCode, body: body)
@@ -41,7 +41,7 @@ public class StandardNetworkClient: NetworkClient {
                 }
 
             } catch let error {
-                callback(.error(error))
+                callback(.failure(error))
             }
         }
     }

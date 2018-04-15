@@ -43,7 +43,7 @@ public class NetworkTask<T> {
 
     func fail(with error: Error) {
         resultHandlers.forEach { handler in
-            handler(.error(error))
+            handler(.failure(error))
         }
     }
 
@@ -78,7 +78,7 @@ public class NetworkTask<T> {
 
     public func onFailure(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
         resultHandlers.append { (result) in
-            if case .error(let error) = result {
+            if case .failure(let error) = result {
                 handler(error)
             }
         }
@@ -95,7 +95,7 @@ public extension NetworkClient {
             switch result {
             case .success(let response):
                 networkTask.succeed(with: response)
-            case .error(let error):
+            case .failure(let error):
                 networkTask.fail(with: error)
             }
         }

@@ -77,7 +77,7 @@ public extension VoidResponseBodied where Self: NetworkCall {
 
     typealias ResponseBody = Void
 
-    func decodeResponse(from data: Data) throws -> Void {
+    func decodeBody(from data: Data) throws -> Void {
         return ()
     }
 }
@@ -91,7 +91,7 @@ public extension DataResponseBodied where Self: NetworkCall {
 
     typealias ResponseBody = Data
 
-    func decodeResponse(from data: Data) throws -> Data {
+    func decodeBody(from data: Data) throws -> Data {
         return data
     }
 }
@@ -113,7 +113,7 @@ public extension JSONResponseBodied {
 
 public extension JSONResponseBodied where Self: NetworkCall, Self.ResponseBody: Decodable {
 
-    func decodeResponse(from data: Data) throws -> ResponseBody {
+    func decodeBody(from data: Data) throws -> ResponseBody {
         return try bodyDecoder.decode(ResponseBody.self, from: data)
     }
 }

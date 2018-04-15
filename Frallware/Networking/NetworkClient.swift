@@ -12,9 +12,16 @@ public protocol NetworkRunnable {
 
 }
 
+public struct NetworkResponse<T> {
+
+    public let httpStatus: Int
+    public let body: T
+
+}
+
 public protocol NetworkClient {
 
-    func send<C: NetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable
+    func send<C: NetworkCall>(_ call: C, callback: @escaping (Result<NetworkResponse<C.ResponseBody>>) -> Void) -> NetworkRunnable
 
 }
 
@@ -23,18 +30,21 @@ public class NetworkTask<T> {
 
     var runnable: NetworkRunnable?
 
-    private var successHandler: ((T) -> Void)?
-    private var errorHandler: ((Error) -> Void)?
+    private var resultHandlers: [(Result<T>) -> Void] = []
 
 
     // Internal
 
-    func finish(with result: T) {
-        successHandler?(result)
+    func succeed(with value: T) {
+        resultHandlers.forEach { handler in
+            handler(.success(value))
+        }
     }
 
     func fail(with error: Error) {
-        errorHandler?(error)
+        resultHandlers.forEach { handler in
+            handler(.error(error))
+        }
     }
 
 
@@ -52,51 +62,43 @@ public class NetworkTask<T> {
         return self
     }
 
-    public func onResponse(_ handler: @escaping (T) -> Void) -> NetworkTask<T> {
-        successHandler = handler
+    public func onResult(_ handler: @escaping (Result<T>) -> Void) -> NetworkTask<T> {
+        resultHandlers.append(handler)
         return self
     }
 
-    public func onError(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
-        errorHandler = handler
+    public func onSuccess(_ handler: @escaping (T) -> Void) -> NetworkTask<T> {
+        resultHandlers.append { (result) in
+            if case .success(let value) = result {
+                handler(value)
+            }
+        }
+        return self
+    }
+
+    public func onFailure(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
+        resultHandlers.append { (result) in
+            if case .error(let error) = result {
+                handler(error)
+            }
+        }
         return self
     }
 }
-
-public extension NetworkTask where T == Void {
-
-    public func onSuccess(_ handler: @escaping () -> Void) -> NetworkTask<T> {
-        return onResponse { _ in handler() }
-    }
-}
-
 
 public extension NetworkClient {
 
-    func request<C: NetworkCall>(_ call: C) -> NetworkTask<C.ResponseBody> {
-        let networkTask = NetworkTask<C.ResponseBody>()
+    func request<C: NetworkCall>(_ call: C) -> NetworkTask<NetworkResponse<C.ResponseBody>> {
+        let networkTask = NetworkTask<NetworkResponse<C.ResponseBody>>()
 
-        networkTask.runnable = send(call) { response, error in
-            if let error = error {
+        networkTask.runnable = send(call) { result in
+            switch result {
+            case .success(let response):
+                networkTask.succeed(with: response)
+            case .error(let error):
                 networkTask.fail(with: error)
-            } else if let response = response {
-                networkTask.finish(with: response)
-            } else {
-                networkTask.fail(with: MissingBodyError(url: call.url))
             }
         }
         return networkTask
-    }
-}
-
-private struct MissingBodyError: Error {
-
-    let url: URL?
-
-    var localizedDescription: String {
-        guard let url = url else {
-            return "Response body was empty"
-        }
-        return "Response body was empty for URL: \(url)"
     }
 }

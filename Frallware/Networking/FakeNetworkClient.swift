@@ -11,17 +11,17 @@ public class FakeNetworkClient: NetworkClient {
 
     public init() {}
 
-    public func send<C: NetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C>(_ call: C, callback: @escaping (Result<NetworkResponse<C.ResponseBody>>) -> Void) -> NetworkRunnable where C : NetworkCall {
         return FakeNetworkRunnable(starter: {
             if let error = self.fakeErrorByType[String(describing: C.self)] {
-                callback(nil, error)
-            } else if let response = self.fakeResponseByType[String(describing: C.self)] as? C.ResponseBody {
-                callback(response, nil)
+                callback(.error(error))
+            } else if let response = self.fakeResponseByType[String(describing: C.self)] as? NetworkResponse<C.ResponseBody> {
+                callback(.success(response))
             }
         })
     }
 
-    public func onCall<C: NetworkCall>(ofType type: C.Type, respondWith response: C.ResponseBody) {
+    public func onCall<C: NetworkCall>(ofType type: C.Type, respondWith response: NetworkResponse<C.ResponseBody>) {
         fakeResponseByType[String(describing: type)] = response
     }
 

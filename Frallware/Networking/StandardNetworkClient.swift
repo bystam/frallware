@@ -20,7 +20,7 @@ public class StandardNetworkClient: NetworkClient {
         self.session = session
     }
 
-    public func send<C: NetworkCall>(_ call: C, callback: @escaping (C.ResponseBody?, Error?) -> Void) -> NetworkRunnable {
+    public func send<C>(_ call: C, callback: @escaping (Result<NetworkResponse<C.ResponseBody>>) -> Void) -> NetworkRunnable where C : NetworkCall {
         let request = self.request(from: call)
 
         if options.logURL {
@@ -29,11 +29,19 @@ public class StandardNetworkClient: NetworkClient {
 
         return session.dataTask(with: request) { data, response, error in
             do {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
                 let data = data ?? Data()
-                let response = try call.decodeResponse(from: data)
-                callback(response, nil)
+
+                if let error = call.decodeError(from: data) {
+                    callback(.error(error))
+                } else {
+                    let body = try call.decodeBody(from: data)
+                    let response = NetworkResponse(httpStatus: statusCode, body: body)
+                    callback(.success(response))
+                }
+
             } catch let error {
-                callback(nil, error)
+                callback(.error(error))
             }
         }
     }

@@ -14,7 +14,7 @@ struct FetchImageCall: NetworkCall, VoidRequestBodied {
         self.url = url
     }
 
-    func decodeResponse(from data: Data) throws -> UIImage? {
+    func decodeBody(from data: Data) throws -> UIImage? {
         return UIImage(data: data)
     }
 }

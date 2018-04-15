@@ -34,7 +34,7 @@ public protocol NetworkCall {
     associatedtype ResponseBody
 
     func decodeError(from data: Data) -> Error?
-    func decodeResponse(from data: Data) throws -> ResponseBody
+    func decodeBody(from data: Data) throws -> ResponseBody
 }
 
 public extension NetworkCall {

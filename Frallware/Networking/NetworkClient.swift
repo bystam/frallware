@@ -32,16 +32,23 @@ public class NetworkTask<T> {
 
     private var resultHandlers: [(Result<T>) -> Void] = []
 
+    private let lock = NSLock()
 
     // Internal
 
     func succeed(with value: T) {
+        lock.lock()
+        defer { lock.unlock() }
+
         resultHandlers.forEach { handler in
             handler(.success(value))
         }
     }
 
     func fail(with error: Error) {
+        lock.lock()
+        defer { lock.unlock() }
+
         resultHandlers.forEach { handler in
             handler(.failure(error))
         }
@@ -63,26 +70,27 @@ public class NetworkTask<T> {
     }
 
     public func onResult(_ handler: @escaping (Result<T>) -> Void) -> NetworkTask<T> {
+        lock.lock()
+        defer { lock.unlock() }
+
         resultHandlers.append(handler)
         return self
     }
 
     public func onSuccess(_ handler: @escaping (T) -> Void) -> NetworkTask<T> {
-        resultHandlers.append { (result) in
+        return onResult { result in
             if case .success(let value) = result {
                 handler(value)
             }
         }
-        return self
     }
 
     public func onFailure(_ handler: @escaping (Error) -> Void) -> NetworkTask<T> {
-        resultHandlers.append { (result) in
+        return onResult { result in
             if case .failure(let error) = result {
                 handler(error)
             }
         }
-        return self
     }
 }
 

@@ -27,16 +27,16 @@ class ViewController: UIViewController {
     private func loadRandomFox() {
         let call = RandomFoxCall()
         client.request(call)
-            .onResponse { self.loadImage(at: $0.image) }
-            .onError(printError)
+            .onSuccess { self.loadImage(at: $0.body.image) }
+            .onFailure(printError)
             .start()
     }
 
     private func loadImage(at url: URL) {
         let call = FetchImageCall(url: url)
         client.request(call)
-            .onResponse(setImage)
-            .onError(printError)
+            .onSuccess { self.setImage($0.body) }
+            .onFailure(printError)
             .start()
     }
 

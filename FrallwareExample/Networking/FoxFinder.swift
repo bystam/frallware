@@ -5,13 +5,13 @@
 import Foundation
 import Frallware
 
-struct RandomFoxCall: FoxNetworkCall, VoidRequestBodied, JSONResponseBodied, MyAppErrorResponserThing {
+struct RandomFoxCall: NetworkCall, VoidRequestBodied, JSONResponseBodied {
 
     struct ResponseBody: Decodable {
         let image: URL
         let link: URL
     }
 
-    let url: URL = URL(string: "https://randomfox.ca/floof)")!
+    let url: URL = URL(string: "https://randomfox.ca/floof")!
     let method: HTTPMethod = .get
 }

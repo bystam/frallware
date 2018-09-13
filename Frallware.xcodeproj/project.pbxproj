@@ -25,7 +25,20 @@
 		DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB495652203C0C6D00B81122 /* libFrallware.a */; };
 		DBF8395A206E839100EB2237 /* FoxFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF83959206E839100EB2237 /* FoxFinder.swift */; };
 		DBF8395C206E841F00EB2237 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8395B206E841F00EB2237 /* ImageFetcher.swift */; };
+		EBE97FA7214AE3DA004FE83F /* Different.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE97FA6214AE3DA004FE83F /* Different.swift */; };
+		EBE97FB1214AE40A004FE83F /* libFrallware.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB495652203C0C6D00B81122 /* libFrallware.a */; };
+		EBE97FB8214AE419004FE83F /* DifferentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE97FB7214AE419004FE83F /* DifferentTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBE97FB2214AE40A004FE83F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB49564A203C0C6D00B81122 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB495651203C0C6D00B81122;
+			remoteInfo = Frallware;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DB495650203C0C6D00B81122 /* CopyFiles */ = {
@@ -60,6 +73,10 @@
 		DBF8394E206E7CF400EB2237 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBF83959206E839100EB2237 /* FoxFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoxFinder.swift; sourceTree = "<group>"; };
 		DBF8395B206E841F00EB2237 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		EBE97FA6214AE3DA004FE83F /* Different.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Different.swift; sourceTree = "<group>"; };
+		EBE97FAC214AE40A004FE83F /* FrallwareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrallwareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBE97FB0214AE40A004FE83F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBE97FB7214AE419004FE83F /* DifferentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DifferentTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +92,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBF83958206E7D8B00EB2237 /* libFrallware.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBE97FA9214AE40A004FE83F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE97FB1214AE40A004FE83F /* libFrallware.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +131,7 @@
 			children = (
 				DB495654203C0C6D00B81122 /* Frallware */,
 				DBF83941206E7CF400EB2237 /* FrallwareExample */,
+				EBE97FAD214AE40A004FE83F /* FrallwareTests */,
 				DB495653203C0C6D00B81122 /* Products */,
 				DBF83957206E7D8B00EB2237 /* Frameworks */,
 			);
@@ -116,6 +142,7 @@
 			children = (
 				DB495652203C0C6D00B81122 /* libFrallware.a */,
 				DBF83940206E7CF400EB2237 /* FrallwareExample.app */,
+				EBE97FAC214AE40A004FE83F /* FrallwareTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +150,7 @@
 		DB495654203C0C6D00B81122 /* Frallware */ = {
 			isa = PBXGroup;
 			children = (
+				EBE97FA5214AE3CD004FE83F /* Different */,
 				DB01D1E4206E76B80078925E /* Fralldation */,
 				DB237BDE206D17C400665ACD /* Networking */,
 				DB4956BD203C10E300B81122 /* iOS+Extra */,
@@ -179,6 +207,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EBE97FA5214AE3CD004FE83F /* Different */ = {
+			isa = PBXGroup;
+			children = (
+				EBE97FA6214AE3DA004FE83F /* Different.swift */,
+			);
+			path = Different;
+			sourceTree = "<group>";
+		};
+		EBE97FAD214AE40A004FE83F /* FrallwareTests */ = {
+			isa = PBXGroup;
+			children = (
+				EBE97FB7214AE419004FE83F /* DifferentTests.swift */,
+				EBE97FB0214AE40A004FE83F /* Info.plist */,
+			);
+			path = FrallwareTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,13 +261,31 @@
 			productReference = DBF83940206E7CF400EB2237 /* FrallwareExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EBE97FAB214AE40A004FE83F /* FrallwareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBE97FB4214AE40A004FE83F /* Build configuration list for PBXNativeTarget "FrallwareTests" */;
+			buildPhases = (
+				EBE97FA8214AE40A004FE83F /* Sources */,
+				EBE97FA9214AE40A004FE83F /* Frameworks */,
+				EBE97FAA214AE40A004FE83F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBE97FB3214AE40A004FE83F /* PBXTargetDependency */,
+			);
+			name = FrallwareTests;
+			productName = FrallwareTests;
+			productReference = EBE97FAC214AE40A004FE83F /* FrallwareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DB49564A203C0C6D00B81122 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Frallware;
 				TargetAttributes = {
@@ -233,6 +296,10 @@
 					};
 					DBF8393F206E7CF400EB2237 = {
 						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					EBE97FAB214AE40A004FE83F = {
+						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -252,6 +319,7 @@
 			targets = (
 				DB495651203C0C6D00B81122 /* Frallware */,
 				DBF8393F206E7CF400EB2237 /* FrallwareExample */,
+				EBE97FAB214AE40A004FE83F /* FrallwareTests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,6 +335,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EBE97FAA214AE40A004FE83F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -275,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB0728B82070243C002A2F44 /* StandardNetworkClient.swift in Sources */,
+				EBE97FA7214AE3DA004FE83F /* Different.swift in Sources */,
 				DB4956BF203C10F300B81122 /* UIKit+Extra.swift in Sources */,
 				DBDF54C3203DAE4100C4B234 /* InterfaceBuilderTypes.swift in Sources */,
 				DB237BE0206D17DF00665ACD /* ConvenienceNetworkTypes.swift in Sources */,
@@ -298,7 +374,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EBE97FA8214AE40A004FE83F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBE97FB8214AE419004FE83F /* DifferentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBE97FB3214AE40A004FE83F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB495651203C0C6D00B81122 /* Frallware */;
+			targetProxy = EBE97FB2214AE40A004FE83F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DBF83946206E7CF400EB2237 /* Main.storyboard */ = {
@@ -489,6 +581,41 @@
 			};
 			name = Release;
 		};
+		EBE97FB5214AE40A004FE83F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M2GKR5PLY4;
+				INFOPLIST_FILE = FrallwareTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tmp.FrallwareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBE97FB6214AE40A004FE83F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M2GKR5PLY4;
+				INFOPLIST_FILE = FrallwareTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tmp.FrallwareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -515,6 +642,15 @@
 			buildConfigurations = (
 				DBF8394F206E7CF400EB2237 /* Debug */,
 				DBF83950206E7CF400EB2237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBE97FB4214AE40A004FE83F /* Build configuration list for PBXNativeTarget "FrallwareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBE97FB5214AE40A004FE83F /* Debug */,
+				EBE97FB6214AE40A004FE83F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

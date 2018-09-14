@@ -235,7 +235,7 @@ class DiffingTests: XCTestCase {
 
         XCTAssertEqual(diff.deleted, [])
         XCTAssertEqual(diff.inserted, [])
-        XCTAssertEqual(diff.updated, [0])
+        XCTAssertEqual(diff.updated, [.init(old: 0, new: 0)])
     }
 
     func testDiff_Compound() {
@@ -259,6 +259,6 @@ class DiffingTests: XCTestCase {
 
         XCTAssertEqual(diff.deleted, [0, 3])
         XCTAssertEqual(diff.inserted, [4])
-        XCTAssertEqual(diff.updated, [0, 2])
+        XCTAssertEqual(diff.updated, [.init(old: 1, new: 0), .init(old: 4, new: 2)])
     }
 }

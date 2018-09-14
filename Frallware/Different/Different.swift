@@ -6,10 +6,15 @@ import UIKit
 
 internal enum Different {
 
+    struct Match: Hashable {
+        let old: Int
+        let new: Int
+    }
+
     internal struct Diff<T: Equatable> {
         internal let deleted: Set<Int>
         internal let inserted: Set<Int>
-        internal let updated: Set<Int>
+        internal let updated: Set<Match>
 
         internal let values: [T]
 
@@ -23,11 +28,6 @@ internal enum Different {
         internal let inserted: Set<Int>
         internal let lcs: Set<Match>
 
-        struct Match: Hashable {
-            let old: Int
-            let new: Int
-        }
-
         internal var isEmpty: Bool {
             return deleted.isEmpty && inserted.isEmpty
         }
@@ -40,7 +40,6 @@ internal enum Different {
         let myers = self.myers(between: oldIds, and: newIds)
         let updated = myers.lcs
             .filter { old[$0.old] != new[$0.new] }
-            .map { $0.new }
 
         return Diff(deleted: myers.deleted, inserted: myers.inserted, updated: Set(updated), values: new)
     }
@@ -53,7 +52,7 @@ internal enum Different {
 
         var deleted: Set<Int> = []
         var inserted: Set<Int> = []
-        var lcsMatches: Set<MyersDiff.Match> = []
+        var lcsMatches: Set<Match> = []
 
         for d in stride(from: Vs.count - 1, through: 0, by: -1) {
             guard p.x > 0 || p.y > 0 else { break }
@@ -159,36 +158,43 @@ extension Different.Diff {
         }
 
         guard tableView.indexPathsForVisibleRows?.isEmpty == false else {
-            let fade = CATransition()
-            fade.type = kCATransitionFade
-            fade.duration = 0.12
-            tableView.layer.add(fade, forKey: "fade")
-            tableView.reloadData()
+            reloadAndFade(in: tableView)
             return
         }
 
         let deletedIndexPaths = deleted.map { IndexPath(row: $0, section: section) }
         let insertedIndexPaths = inserted.map { IndexPath(row: $0, section: section) }
 
-        if #available(iOS 11.0, *) {
-            tableView.performBatchUpdates({
-                tableView.deleteRows(at: deletedIndexPaths, with: .automatic)
-                tableView.insertRows(at: insertedIndexPaths, with: .automatic)
-            }, completion: nil)
-        } else {
-            tableView.beginUpdates()
+        runBatchChanges(in: tableView) {
             tableView.deleteRows(at: deletedIndexPaths, with: .automatic)
             tableView.insertRows(at: insertedIndexPaths, with: .automatic)
-            tableView.endUpdates()
-        }
 
-        updated.forEach { index in
-            let indexPath = IndexPath(row: index, section: section)
-            guard let visibleCell = tableView.cellForRow(at: indexPath) else {
-                return
+            updated.forEach { match in
+                let oldIndexPath = IndexPath(row: match.old, section: section)
+                let newValue = values[match.new]
+                guard let visibleCell = tableView.cellForRow(at: oldIndexPath) else {
+                    return
+                }
+                updater(visibleCell, newValue)
             }
-            let value = values[index]
-            updater(visibleCell, value)
+        }
+    }
+
+    private func reloadAndFade(in tableView: UITableView) {
+        let fade = CATransition()
+        fade.type = kCATransitionFade
+        fade.duration = 0.12
+        tableView.layer.add(fade, forKey: "fade")
+        tableView.reloadData()
+    }
+
+    private func runBatchChanges(in tableView: UITableView, _ changes: () -> Void) {
+        if #available(iOS 11.0, *) {
+            tableView.performBatchUpdates(changes, completion: nil)
+        } else {
+            tableView.beginUpdates()
+            changes()
+            tableView.endUpdates()
         }
     }
 }
